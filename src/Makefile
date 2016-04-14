@@ -13,5 +13,13 @@ pecas.o: pecas.c pecas.h tela.c tela.h
 	gcc -g -c pecas.c -lncurses
 rodaprograma:
 	./programa
-limpa: 
-	rm *.o
+Teste :	tela.c tela_Teste.c
+	gcc -I./CUnit -L./CUnit tela_Teste.c -lcunit -o testeTela
+	./testeTela
+
+gcov :	tela.c tela_Teste.c
+	gcc -Wall -ftest-coverage -fprofile-arcs -I./CUnit -L./CUnit tela_Teste.c -lcunit -o teste_gcov
+	./teste_gcov
+
+limpa : 
+	rm *.gcda *.gcno *.gcov
