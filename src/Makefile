@@ -14,14 +14,14 @@ pecas.o: pecas.c pecas.h tela.c tela.h
 rodaprograma:
 	./programa
 
-Teste : teste gcov 
+Testes : teste gcov 
 
-teste : tela_Teste.c tela.c tela.h
-	gcc -g -I./CUnit -L./CUnit tela_Teste.c -lcunit -lncurses -o testeTela
-	./testeTela
+teste : engine.c engine.h tela.c tela.h
+	gcc -g -I./CUnit -L./CUnit testes.c -lcunit -lncurses -o testes
+	./testes
 
-gcov :	tela.c tela_Teste.c
-	gcc -g -Wall -ftest-coverage -fprofile-arcs -I./CUnit -L./CUnit tela_Teste.c -lcunit -lncurses -o teste_gcov
+gcov :	tela.c engine.c testes.c
+	gcc -g -Wall -ftest-coverage -fprofile-arcs -I./CUnit -L./CUnit testes.c -lcunit -lncurses -o teste_gcov
 	./teste_gcov
 
 limpa : 

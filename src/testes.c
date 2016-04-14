@@ -7,13 +7,10 @@
 #include "CUnit/CUnit.h" // Aqui as bibliotecas CUnit necessárias para rodar o teste;
 #include "CUnit/Basic.h"
 
-#include "tela.c" // Este é o escopo que estará sobre julgo nesses testes
-
-
-//algumas funções do módulo não tiveram testes estáticos realizados porque seu retorno é vazio.
+#include "engine.c" // Este é o escopo que estará sobre julgo nesses testes
+#include "tela.c"
 
 void adicionar_suite(void);
-
 
 
 void Teste_da_criacao_de_Tela(void){
@@ -38,21 +35,36 @@ e também se seus valores foram preenchidos como esperado*/
 
 }
 
+void Teste_Do_Imput_Das_Setas(void){
+	int setaEsquerda, setaDireita, setaBaixo;
+
+	setaEsquerda = KEY_LEFT;
+	setaDireita = KEY_RIGHT;
+	setaBaixo = KEY_DOWN;
+
+	CU_ASSERT_EQUAL(    setaBaixo, pega_input( KEY_DOWN) ); 
+	CU_ASSERT_EQUAL( setaEsquerda, pega_input( KEY_LEFT) ); //Verifica se a função está capturando corretamente sua condição de saída
+	CU_ASSERT_EQUAL(  setaDireita, pega_input(KEY_RIGHT) );
+
+}
+
 void  adicionar_suite(void){
-	CU_pSuite suite;
+	CU_pSuite suiteEngine;
+	CU_pSuite suiteTela;
 	
-	/*Cria uma suite que conterá todos os testes*/
-	suite = CU_add_suite("Testes da tela",NULL,NULL);
+	/*Cria suites que conterão todos os testes*/
+	suiteTela = CU_add_suite("Testes da Tela",NULL,NULL);
+	suiteEngine = CU_add_suite("Testes da Engine",NULL,NULL);
 	
 	
 	/*Adiciona os testes para a função DT_data_valida*/
-	CU_ADD_TEST(suite, Teste_da_criacao_de_Tela );
+	CU_ADD_TEST(suiteTela, Teste_da_criacao_de_Tela );
+	CU_ADD_TEST(suiteEngine, Teste_Do_Imput_Das_Setas);
 
 }
 
 
-int
-main(void){
+int main(void){
 	/*Inicializa o registro de suítes e testes do CUnit*/	
 	if (CUE_SUCCESS != CU_initialize_registry())
     		return CU_get_error();
