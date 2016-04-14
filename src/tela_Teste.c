@@ -4,17 +4,43 @@
 #include <string.h>
 #include <ncurses.h>
 
-#include "tela.h" // Dependência do escopo que está sendo testado
-
 #include "CUnit/CUnit.h" // Aqui as bibliotecas CUnit necessárias para rodar o teste;
 #include "CUnit/Basic.h"
 
-#include "tela.c" // Este é o escopo que estará sobre julgo nesses testes
+#include "tela.c" // Dependência do escopo que está sendo testado
+
+
+
+//#include "tela.c" // Este é o escopo que estará sobre julgo nesses testes
 
 
 //algumas funções do módulo não tiveram testes estáticos realizados porque seu retorno é vazio.
 
 void adicionar_suite(void);
+
+
+
+void Teste_da_criacao_de_Tela(void){
+/*Este teste verificará se a estrutura foi criada corretamente
+e também se seus valores foram preenchidos como esperado*/
+
+	int pontuacao, gameOver, pecaEncaixada;
+
+	Tela* telaTeste;
+
+	telaTeste = malloc(sizeof(Tela));
+
+	telaTeste = cria_tela(); // Primeira etapa para saber se retorna um tipo Tela
+
+	pontuacao = telaTeste->cont_pontuacao;
+	gameOver = telaTeste->Game_over;
+	pecaEncaixada = telaTeste->peca_encaixada;
+
+	CU_ASSERT_TRUE( !pontuacao ); // verifica se Pontuação é igual a 0
+	CU_ASSERT_TRUE( !gameOver ); // verifica se Game Over é igual a 0
+	CU_ASSERT_TRUE( !pecaEncaixada ); // verifica se Peça Encaixada é igual a 0
+
+}
 
 void  adicionar_suite(void){
 	CU_pSuite suite;
@@ -27,29 +53,6 @@ void  adicionar_suite(void){
 	CU_ADD_TEST(suite, Teste_da_criacao_de_Tela );
 
 }
-
-void Teste_da_criacao_de_Tela(void){
-/*Este teste verificará se a estrutura foi criada corretamente
-e também se seus valores foram preenchidos como esperado*/
-
-	int pontuacao, gameOver, pecaEncaixada;
-
-	Tela *tela;
-	tela  = malloc(sizeof(Tela));
-
-	tela = cria_tela(); // Primeira etapa para saber se retorna um tipo Tela
-
-	pontuacao = tela->cont_pontuacao;
-	gameOver = tela->Game_over;
-	pecaEncaixada = tela->peca_encaixada;
-
-	CU_ASSERT_TRUE( !pontuacao ); // verifica se Pontuação é igual a 0
-	CU_ASSERT_TRUE( !gameOver ); // verifica se Game Over é igual a 0
-	CU_ASSERT_TRUE( !pecaEncaixada ); // verifica se Peça Encaixada é igual a 0
-
-}
-
-
 
 
 int
