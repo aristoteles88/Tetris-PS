@@ -7,11 +7,7 @@
 #include "CUnit/CUnit.h" // Aqui as bibliotecas CUnit necessárias para rodar o teste;
 #include "CUnit/Basic.h"
 
-#include "tela.c" // Dependência do escopo que está sendo testado
-
-
-
-//#include "tela.c" // Este é o escopo que estará sobre julgo nesses testes
+#include "tela.c" // Este é o escopo que estará sobre julgo nesses testes
 
 
 //algumas funções do módulo não tiveram testes estáticos realizados porque seu retorno é vazio.
