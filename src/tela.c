@@ -60,6 +60,9 @@ Tela *cria_tela(){
     tela->janela_pontuacao = Pontuacao;
     wbkgd(tela->janela_pontuacao,COLOR_PAIR(1));
     box(tela->janela_pontuacao, ACS_VLINE, ACS_HLINE);
+
+    wattrset(tela->janela_jogo, COLOR_PAIR(2));
+    mvwprintw(tela->janela_jogo,5,1,"------------------------");
     
     tela->cont_pontuacao = pontos;
      
@@ -107,4 +110,3 @@ void verifica_linhas(Tela* tela){
         mostra_tela(tela);
     }
 }
-
