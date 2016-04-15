@@ -25,7 +25,7 @@ void nova_peca(peca* NovaPeca, Tela* tela){
         }
     }
     
-    NovaPeca->cor = ((rand() % 6) + 2);
+    NovaPeca->cor = ((rand() % 5) + 3);
     escrevePeca(NovaPeca,tela);
 
 }
