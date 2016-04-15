@@ -1,28 +1,31 @@
 all: msgola programa limpa rodaprograma
+
+teste: engine.o tela.o pecas.o
+	gcc -I./CUnit -L./CUnit testes.c tela.o pecas.o engine.o -lcunit -lncurses -o testes -std=c99
+	./testes
+	rm *.o
+
 msgola:  
 	@echo Bem vindo ao makefile. Vou tentar executar o programa. 
+
 programa: main.o tela.o pecas.o engine.o
-	gcc -std=c99 -g main.o tela.o pecas.o engine.o -o programa -lncurses
+	gcc -std=c99 main.o tela.o pecas.o engine.o -o programa -lncurses
+
 main.o: main.c tela.c tela.h pecas.c pecas.h engine.c engine.h
-	gcc -std=c99 -g -c main.c -lncurses
+	gcc -std=c99 -c main.c -lncurses
+
 engine.o: engine.c engine.h
-	gcc -g -c engine.c -lncurses
+	gcc -c engine.c -lncurses
+
 tela.o: tela.c tela.h
-	gcc -std=c99 -g -c tela.c -lncurses
+	gcc -std=c99 -c tela.c -lncurses
+
 pecas.o: pecas.c pecas.h tela.c tela.h
-	gcc -std=c99 -g -c pecas.c -lncurses
+	gcc -std=c99 -c pecas.c -lncurses
+
 rodaprograma:
 	./programa
 
-Testes : teste gcov 
-
-teste : engine.c engine.h tela.c tela.h
-	gcc -g -I./CUnit -L./CUnit testes.c -lcunit -lncurses -o testes
-	./testes
-
-gcov :	tela.c engine.c testes.c
-	gcc -g -Wall -ftest-coverage -fprofile-arcs -I./CUnit -L./CUnit testes.c -lcunit -lncurses -o teste_gcov
-	./teste_gcov
 
 limpa : 
 	rm *.o
