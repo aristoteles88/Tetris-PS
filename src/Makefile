@@ -14,15 +14,9 @@ pecas.o: pecas.c pecas.h tela.c tela.h
 rodaprograma:
 	./programa
 
-Testes : teste gcov 
-
 teste : engine.c engine.h tela.c tela.h
 	gcc -g -I./CUnit -L./CUnit testes.c -lcunit -lncurses -o testes
 	./testes
-
-gcov :	tela.c engine.c testes.c
-	gcc -g -Wall -ftest-coverage -fprofile-arcs -I./CUnit -L./CUnit testes.c -lcunit -lncurses -o teste_gcov
-	./teste_gcov
 
 limpa : 
 	rm *.o
