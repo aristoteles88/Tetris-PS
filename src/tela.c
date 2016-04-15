@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ncurses.h>
+#include <time.h>
 #include "tela.h"
 
 void tela_inicio(){
@@ -18,10 +19,10 @@ void tela_inicio(){
     refresh();
 }
 
-void tela_fim(Tela* t){
+void tela_fim(Tela* t, int tempo){
     WINDOW *telaFinal=newwin(20,102,1,1);
     int tecla;
-    
+
     do{
         mvprintw(2,1,"  /////////  ///////  //     //  /////////   ///////// //     // ///////// //////// ");
         mvprintw(3,1,"  //        //     // ///   ///  //          //     // //     // //        //     //");
@@ -31,7 +32,7 @@ void tela_fim(Tela* t){
         mvprintw(7,1,"  //     // //     // //     //  //          //     //   // //   //        //    // ");
         mvprintw(8,1,"  ///////// //     // //     //  /////////   /////////    ///    ///////// //     //");
         mvprintw(20,30,"Sua pontuação foi: %d", t->cont_pontuacao);
-        mvprintw(21,30,"Tempo do jogo: %d", t->cont_pontuacao);
+        mvprintw(21,30,"Tempo do jogo: %d", tempo);
         mvprintw(23,30,"Pressione a tecla 'q' para encerrar.");
         refresh();
         tecla = getch();

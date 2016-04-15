@@ -11,6 +11,6 @@ typedef struct{
 }Tela;
 void tela_inicio();
 Tela *cria_tela();
-void tela_fim(Tela *tela);
+void tela_fim(Tela *tela, int tempo);
 void mostra_tela(Tela* tela);
 void verifica_linhas(Tela* tela);
