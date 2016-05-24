@@ -63,7 +63,7 @@ Tela *cria_tela(){
     box(tela->janela_pontuacao, ACS_VLINE, ACS_HLINE);
 
     wattrset(tela->janela_jogo, COLOR_PAIR(2));
-    mvwprintw(tela->janela_jogo,5,1,"------------------------");
+    mvwprintw(tela->janela_jogo,5,1,"-----------------------");
     
     tela->cont_pontuacao = pontos;
      
@@ -73,6 +73,8 @@ Tela *cria_tela(){
     
     return tela;
 }
+
+
 
 void mostra_tela(Tela *t){
     mvwprintw(t->janela_pontuacao,1,1, "PONTUACAO: %.12d", t->cont_pontuacao);

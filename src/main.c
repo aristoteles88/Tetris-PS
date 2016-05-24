@@ -1,3 +1,14 @@
+//! Arquivo principal do programa Tetris implementado para o trabalho prático da disciplina Programação Sistemática..
+/////////////////////////////////////////////////////////////
+/*!
+ *	\author Arthur Moreira
+ *	\author Pedro Araújo
+ *	\author Marcos Vinicius Pereira Marques		
+ *	\author Aristóteles Soares Benício Júnior
+ *	\version 2.0
+ */
+/////////////////////////////////////////////////////////////
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <ncurses.h>
