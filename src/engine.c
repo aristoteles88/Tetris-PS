@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ncurses.h>
+#include <time.h>
 #include "engine.h"
 
 void inicia_ncurses(){
@@ -22,7 +23,7 @@ void finaliza_ncurses(){
 }
 
 int pega_input(int input){
-    while(input != KEY_LEFT && input != KEY_RIGHT && input != KEY_DOWN){
+    while(input != KEY_LEFT && input != KEY_RIGHT && input != KEY_DOWN && input != KEY_UP){
         input = getch();
     }
     return input;

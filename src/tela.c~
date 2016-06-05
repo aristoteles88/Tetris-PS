@@ -62,37 +62,20 @@ Tela *cria_tela(){
     wbkgd(tela->janela_pontuacao,COLOR_PAIR(1));
     box(tela->janela_pontuacao, ACS_VLINE, ACS_HLINE);
 
-	mostraLinhaLimite(tela);
-	
+    wattrset(tela->janela_jogo, COLOR_PAIR(2));
+    mvwprintw(tela->janela_jogo,5,1,"------------------------");
+    
     tela->cont_pontuacao = pontos;
      
     tela->Game_over = 0;
     
     tela->peca_encaixada = 0;
-	
-	for(int i = 0; i < QUANTIDADE_COLUNAS; i++){
-		for(int j = 0; j < QUANTIDADE_LINHAS; j++){
-			tela->PosicoesOcupadas[i][j] = 0;
-		}
-	}
+    
     return tela;
 }
 
-void mostraLinhaLimite(Tela *tela){
-	char lugarocupado = ' ';
-	for (int i = 1; i < 24; i++){
-		lugarocupado = mvwinch(tela->janela_jogo,5,i);
-		if (lugarocupado != 'o'){
-			wattrset(tela->janela_jogo, COLOR_PAIR(2));
-			mvwprintw(tela->janela_jogo,5,i,"-");
-		}
-	}
-}
-
-
 void mostra_tela(Tela *t){
     mvwprintw(t->janela_pontuacao,1,1, "PONTUACAO: %.12d", t->cont_pontuacao);
-	mostraLinhaLimite(t);
     wrefresh(t->janela_jogo);
     wrefresh(t->janela_pontuacao);
     
