@@ -20,4 +20,5 @@ void move_peca_x(peca* peca, Tela* tela, int x);
 void move_peca_y(peca* peca, Tela* tela, int y);
 void limpa_peca(peca* peca,Tela* tela);
 void testa_limite(peca* peca,Tela* tela);
-int testaColisao(peca* Peca, Tela* tela, int orientacao);
+int testaColisaox(peca* Peca, Tela* tela, int orientacao);
+int testaColisaoy(peca* Peca, Tela* tela, int orientacao);

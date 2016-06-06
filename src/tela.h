@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ncurses.h>
+#include "engine.h"
 
 #define QUANTIDADE_LINHAS 15
 #define QUANTIDADE_COLUNAS 25
