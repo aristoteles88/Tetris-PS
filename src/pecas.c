@@ -74,16 +74,16 @@ void nova_peca(peca* NovaPeca, Tela* tela){
 	  case 0:
 		  break;
 	  case 1:
-		  rotacionaPeca(NovaPeca, tela);
+		  rotacionaPeca(NovaPeca);
 		  break;
 	  case 2:
 		  for(int i = 0; i < 2; i++){
-			  rotacionaPeca(NovaPeca, tela);
+			  rotacionaPeca(NovaPeca);
 		  }
 		  break;
 	  case 3:
 		  for(int i = 0; i < 3; i++){
-			  rotacionaPeca(NovaPeca, tela);
+			  rotacionaPeca(NovaPeca);
 		  }
 		  break;
 	}
@@ -101,31 +101,43 @@ void escrevePeca(peca* peca, Tela* tela){
     for(int i = 0; i < peca->tamanho; i++){
 		mvwaddch(tela->janela_jogo,peca->posicao[peca->orientacao][i][1],peca->posicao[peca->orientacao][i][0],'o');
     }
-    for(int j = 0; j < peca->tamanho; j++){
-		mvprintw(j+12,0,"Peca Atual: (%i,%i)", peca->posicao[peca->orientacao][j][0], peca->posicao[peca->orientacao][j][1]);
-	}
+
     mostra_tela(tela);
 }
 
-void rotacionaPeca(peca* peca, Tela* tela){
-	peca->orientacao = (peca->orientacao++) % 4;
+void rotacionaPeca(peca* peca){
+	peca->orientacao = (peca->orientacao + 1) % 4;
 }
 
 void move_peca(peca* Peca, Tela *interfaceJogo, int movimento){
     char lugar_ocupado = ' ';
-    peca *PecaTemporaria = Peca;
-	
+    int ResultadotestaColisao = 0;
+    	
     if(movimento == KEY_LEFT){
 		limpa_peca(Peca,interfaceJogo);
-		move_peca_x(PecaTemporaria, interfaceJogo, -1);
-		testaColisao(PecaTemporaria, Peca, interfaceJogo);
+		move_peca_x(Peca, interfaceJogo, -1);
+		for(int i = 0; i < ORIENTACAO; i++){
+			ResultadotestaColisao = testaColisao(Peca, interfaceJogo, i);
+			if(ResultadotestaColisao){
+				for(int j = 0; j < Peca->tamanho; j++){
+					Peca->posicao[i][j][0] += 1;
+				}
+			}
+		}
 		escrevePeca(Peca, interfaceJogo);
 	}
 		
 	if(movimento == KEY_RIGHT){
     	limpa_peca(Peca,interfaceJogo);
-		move_peca_x(PecaTemporaria, interfaceJogo, 1);
-		testaColisao(PecaTemporaria, Peca, interfaceJogo);
+		move_peca_x(Peca, interfaceJogo, 1);
+		for(int i = 0; i < ORIENTACAO; i++){
+			ResultadotestaColisao = testaColisao(Peca, interfaceJogo, i);
+			if(ResultadotestaColisao){
+				for(int j = 0; j < Peca->tamanho; j++){
+					Peca->posicao[i][j][0] -= 1;
+				}
+			}
+		}
 		escrevePeca(Peca, interfaceJogo);
 	}
 }
@@ -172,7 +184,7 @@ void move_peca(peca* Peca, Tela *interfaceJogo, int movimento){
 void move_peca_x(peca* peca, Tela* tela, int x){    
 	for(int i = 0; i < ORIENTACAO; i++){
 		for(int j = 0; j < peca->tamanho; j++){
-			peca->posicao[i][j][0] = peca->posicao[i][j][0] + x;
+			peca->posicao[i][j][0] += x;
 		}
 	}
 }
@@ -199,37 +211,13 @@ void testa_limite(peca* peca, Tela* tela){
     }
 }
 
-/*void recuaPecaY(peca* peca){
-	int posicaomaisalta = 10;
-	for(int i = 0; i < peca->tamanho; i++){
-		if(peca->posicao[i][1] < posicaomaisalta){
-			posicaomaisalta = peca->posicao[i][1];
-		}
-	}
-	if(posicaomaisalta != 1){
-		for(int i = 0; i < peca->tamanho; i++){
-			peca->posicao[i][1] -= (posicaomaisalta - 1);
-		}
-	}
-}*/
-
-void testaColisao(peca* Peca, peca* PecaTemporaria, Tela* tela){
+int testaColisao(peca* Peca, Tela* tela, int orientacao){
 	int posicao_invalida = 0;
-	for(int i = 0; i < ORIENTACAO; i++){
-		for(int j = 0; j < PecaTemporaria->tamanho; j++){
-			if(PecaTemporaria->posicao[i][j][0] < 2 || PecaTemporaria->posicao[i][j][0] > 22 || tela->PosicoesOcupadas[PecaTemporaria->posicao[i][j][0]][PecaTemporaria->posicao[i][j][1]] != 0){
-				posicao_invalida = 1;
-			}
-		}
-		if(posicao_invalida == 1){
-			posicao_invalida = 0;
-		}
-		else{
-			for(int k = 0; k < PecaTemporaria->tamanho; k++){
-				Peca->posicao[i][k][0] = PecaTemporaria->posicao[i][k][0];
-				mvprintw(20,0,"Peca Temporaria: (%i,%i)", PecaTemporaria->posicao[PecaTemporaria->orientacao][k][0], PecaTemporaria->posicao[PecaTemporaria->orientacao][k][1]);
-				mvprintw(21,0,"Peca: (%i,%i)", PecaTemporaria->posicao[Peca->orientacao][k][0], Peca->posicao[Peca->orientacao][k][1]);
-			}	
+	for(int j = 0; j < Peca->tamanho; j++){
+		if(Peca->posicao[orientacao][j][0] < 1 || Peca->posicao[orientacao][j][0] > 23 || tela->PosicoesOcupadas[Peca->posicao[orientacao][j][0]][Peca->posicao[orientacao][j][1]] != 0){
+			posicao_invalida = 1;
 		}
 	}
+	
+	return posicao_invalida;
 }

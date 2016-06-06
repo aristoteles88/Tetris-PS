@@ -37,7 +37,7 @@ int main(){
         movimento = pega_input(tecla);
 		if(movimento == KEY_UP){
 			limpa_peca(Peca, interfaceJogo);
-			rotacionaPeca(Peca, interfaceJogo);
+			rotacionaPeca(Peca);
 			escrevePeca(Peca, interfaceJogo);
 		}
 		else if (movimento == KEY_DOWN){
