@@ -23,8 +23,6 @@ void finaliza_ncurses(){
 }
 
 int pega_input(int input){
-    while(input != KEY_LEFT && input != KEY_RIGHT && input != KEY_DOWN && input != KEY_UP){
-        input = getch();
-    }
-    return input;
+	input = getch();
+	return input;
 }

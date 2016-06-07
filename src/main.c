@@ -19,35 +19,51 @@
 int main(){
     Tela *interfaceJogo;
     peca* Peca = NULL;
-    int i=0, movimento, tecla=0;
-    time_t tempo;
+	time_t tempo, tempo_gravidade, gravidade = 1000;
+    int i=0, movimento = 0;
     Peca = malloc(sizeof(peca));
 	
 	inicia_ncurses();    
     keypad(stdscr, TRUE);
     curs_set(0);
     noecho();
+	cbreak();
     tela_inicio(interfaceJogo);
     tempo = time(NULL);
     interfaceJogo = cria_tela();
     mostra_tela(interfaceJogo);
     nova_peca(Peca, interfaceJogo);
-    
+	timeout(-1);
+	
     do{
-        movimento = pega_input(tecla);
-		if(movimento == KEY_UP){
+		movimento = pega_input(movimento);
+		timeout(gravidade);
+		
+		if(movimento != ERR){
+			if(movimento == KEY_LEFT || movimento == KEY_RIGHT || movimento == KEY_DOWN || movimento == KEY_UP){
+				if(movimento == KEY_UP){
+					limpa_peca(Peca, interfaceJogo);
+					rotacionaPeca(Peca);
+					escrevePeca(Peca, interfaceJogo);
+				}
+				else if (movimento == KEY_DOWN){
+					gravidade = gravidade*0.5;
+				}
+				else{
+					limpa_peca(Peca, interfaceJogo);
+					move_peca(Peca, interfaceJogo, movimento);
+					escrevePeca(Peca, interfaceJogo);
+				}
+			}
+		}
+			
+		else{
 			limpa_peca(Peca, interfaceJogo);
-			rotacionaPeca(Peca, interfaceJogo);
+			move_peca_y(Peca, interfaceJogo,1);
 			escrevePeca(Peca, interfaceJogo);
 		}
-		else if (movimento == KEY_DOWN){
-			move_peca(Peca, interfaceJogo, movimento);
-		}
-		else{
-			move_peca(Peca, interfaceJogo, movimento);
-		}
 
-        testa_limite(Peca,interfaceJogo);
+		testa_limite(Peca,interfaceJogo);
         if(interfaceJogo->peca_encaixada == 1){
             verifica_linhas(interfaceJogo);
             interfaceJogo->peca_encaixada = 0;

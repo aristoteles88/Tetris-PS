@@ -14,11 +14,11 @@ typedef struct{
 
 void nova_peca(peca* peca, Tela* tela);
 void escrevePeca(peca* peca, Tela* tela);
-void rotacionaPeca(peca* peca, Tela* tela);
+void rotacionaPeca(peca* peca);
 void move_peca(peca* peca, Tela *tela, int movimento);
 void move_peca_x(peca* peca, Tela* tela, int x);
 void move_peca_y(peca* peca, Tela* tela, int y);
 void limpa_peca(peca* peca,Tela* tela);
 void testa_limite(peca* peca,Tela* tela);
-void recuaPeca(peca* peca);
-void testaColisao(peca* Peca, peca* PecaTemporaria, Tela* tela);
+int testaColisaox(peca* Peca, Tela* tela, int orientacao);
+int testaColisaoy(peca* Peca, Tela* tela, int orientacao);

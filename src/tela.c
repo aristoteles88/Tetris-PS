@@ -5,6 +5,7 @@
 #include "tela.h"
 
 void tela_inicio(){
+	int tecla = 1;
     WINDOW *telaInicio=newwin(20,101,1,1);
     mvprintw(2,20,"///////// ///////// ///////// ////////  ///  ////////");
     mvprintw(3,20,"   ///    //           ///    //     // /// //       ");
@@ -14,14 +15,14 @@ void tela_inicio(){
     mvprintw(7,20,"   ///    //           ///    //    //  ///        //");
     mvprintw(8,20,"   ///    /////////    ///    //     // /// //////// ");
     mvprintw(20,30,"Pressione uma tecla para começar.");
-    getch();
+    tecla = pega_input(tecla);
     erase();
     refresh();
 }
 
 void tela_fim(Tela* t, int tempo){
     WINDOW *telaFinal=newwin(20,102,1,1);
-    int tecla;
+    int tecla = 1;
 
     do{
         mvprintw(2,1,"  /////////  ///////  //     //  /////////   ///////// //     // ///////// //////// ");
@@ -35,7 +36,7 @@ void tela_fim(Tela* t, int tempo){
         mvprintw(21,30,"Tempo do jogo: %d", tempo);
         mvprintw(23,30,"Pressione a tecla 'q' para encerrar.");
         refresh();
-        tecla = getch();
+        tecla = pega_input(tecla);
     }while(tecla != 'q');
     
     erase();
