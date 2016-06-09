@@ -31,7 +31,7 @@ void nova_peca(peca* NovaPeca, Tela* tela){
 		PecaGeralL = {4, 5, 0, {{{13,1},{13,2},{13,3},{14,3},{15,3},{0,0},{0,0}},
 								{{13,1},{13,2},{13,3},{12,3},{11,3},{0,0},{0,0}},
 								{{11,1},{12,1},{13,1},{13,2},{13,3},{0,0},{0,0}},
-								{{13,1},{13,2},{13,3},{14,1},{15,1},{0,0},{0,0}}}, 0},
+								{{13,1},{14,1},{15,1},{13,2},{13,3},{0,0},{0,0}}}, 0},
 		
 		PecaGeralZ = {5, 5, 0, {{{12,1},{13,1},{13,2},{13,3},{14,3},{0,0},{0,0}},
 								{{14,1},{14,2},{13,2},{12,2},{12,3},{0,0},{0,0}},
@@ -39,7 +39,7 @@ void nova_peca(peca* NovaPeca, Tela* tela){
 								{{14,1},{14,2},{13,2},{12,2},{12,3},{0,0},{0,0}}}, 0},
 		 
 		PecaGeralT = {6, 7, 0, {{{11,1},{12,1},{13,1},{14,1},{15,1},{13,2},{13,3}},
-								{{12,1},{12,2},{12,3},{12,4},{12,5},{13,3},{14,3}},
+								{{12,1},{12,2},{12,3},{13,3},{14,3},{12,4},{12,5}},
 								{{13,1},{13,2},{11,3},{12,3},{13,3},{14,3},{15,3}},
 								{{12,3},{13,3},{14,1},{14,2},{14,3},{14,4},{14,5}}}, 0};
 		
@@ -166,7 +166,7 @@ void limpa_peca(peca* peca, Tela* tela){
 
 void testa_limite(peca* peca, Tela* tela){
     for(int i = 0; i < peca->tamanho; i++){
-		if(peca->posicao[peca->orientacao][i][1] > 11 && tela->peca_encaixada){
+		if(peca->posicao[peca->orientacao][i][1] < 5  && tela->peca_encaixada){
             tela->Game_over = 1;
         }
     }
@@ -186,10 +186,18 @@ int testaColisaox(peca* Peca, Tela* tela, int orientacao){
 int testaColisaoy(peca* Peca, Tela* tela, int orientacao){
 	int posicao_invalida = 0;
 	for(int j = 0; j < Peca->tamanho; j++){
-		if(Peca->posicao[orientacao][j][1] > 13 || tela->PosicoesOcupadas[Peca->posicao[orientacao][j][1]][Peca->posicao[orientacao][j][1]] != 0){
+		mvprintw(31+j,0,"Posicao: (%i,%i)", Peca->posicao[orientacao][j][0],Peca->posicao[orientacao][j][1]);
+		mvprintw(28,0,"Posicao seguinte: %i", tela->PosicoesOcupadas[Peca->posicao[orientacao][Peca->tamanho-1][0]][Peca->posicao[orientacao][Peca->tamanho-1][1]]);
+		if(Peca->posicao[orientacao][j][1] == 14 || tela->PosicoesOcupadas[Peca->posicao[orientacao][j][0]][Peca->posicao[orientacao][j][1]] != 0){
 			posicao_invalida = 1;
 		}
 	}
 	
 	return posicao_invalida;
+}
+
+void gravaPosicoesOcupadas(peca *peca, Tela* tela){
+	for(int i = 0; i < peca->tamanho; i++){
+		tela->PosicoesOcupadas[peca->posicao[peca->orientacao][i][0]][peca->posicao[peca->orientacao][i][1]] = peca->cor;
+	}
 }

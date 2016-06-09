@@ -100,32 +100,33 @@ void mostra_tela(Tela *t){
 }
 
 void verifica_linhas(Tela* tela){
-    int linha, coluna, posicao_x, posicao_y, casas_ocupadas, cor;
-    char caracter_casa;
-        
-    casas_ocupadas = 0;
-    
-    for(linha = 13; linha > 0; linha--){
-        for(coluna = 1; coluna < 24; coluna++){
-            caracter_casa = mvwinch(tela->janela_jogo,linha,coluna);
-            if(caracter_casa == 'o'){
-                casas_ocupadas++;
-                caracter_casa = ' ';
-            }
-        }
-        if(casas_ocupadas == 23){
-            for(posicao_y = linha; posicao_y > 1; posicao_y--){
-                for(posicao_x = 1; posicao_x < 24; posicao_x++){
-                   // cor = mvwinch(tela->janela_jogo,posicao_y-1,posicao_x) & A_COLOR;
-                    caracter_casa = mvwinch(tela->janela_jogo,posicao_y-1,posicao_x);
-                    wattrset(tela->janela_jogo, COLOR_PAIR(cor));
-                    mvwaddch(tela->janela_jogo,posicao_y,posicao_x,caracter_casa);
-                }
-            }
-            tela->cont_pontuacao = tela->cont_pontuacao + 100;
-            linha++;
-        }
-        casas_ocupadas = 0;
-        mostra_tela(tela);
-    }
+	int contaPosicoesOcupadas = 0;
+    for(int j = 13; j > 4; j--){
+		for(int i = 1; i < QUANTIDADE_COLUNAS-1; i++){
+			if(tela->PosicoesOcupadas[i][j] != 0){
+				contaPosicoesOcupadas++;
+			}
+		}
+		if(contaPosicoesOcupadas == 23){
+			for(int k = j; k > 4; k--){
+				for(int l = 1; l < QUANTIDADE_COLUNAS-1; l++){
+					tela->PosicoesOcupadas[l][k] = tela->PosicoesOcupadas[l][k-1];
+				}
+			}
+			tela->cont_pontuacao += 100;
+		}
+		contaPosicoesOcupadas = 0;
+	}
+	for(int j = 13; j > 4; j--){
+		for(int i = 1; i < QUANTIDADE_COLUNAS-1; i++){
+			  if(tela->PosicoesOcupadas[i][j] != 0){
+				  wattrset(tela->janela_jogo, COLOR_PAIR(tela->PosicoesOcupadas[i][j]));
+				  mvwprintw(tela->janela_jogo,j,i,"o");
+			  }
+			  else{
+				  mvwprintw(tela->janela_jogo,j,i," ");
+			  }
+		}
+	}
+	mostra_tela(tela);
 }

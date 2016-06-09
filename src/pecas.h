@@ -22,3 +22,4 @@ void limpa_peca(peca* peca,Tela* tela);
 void testa_limite(peca* peca,Tela* tela);
 int testaColisaox(peca* Peca, Tela* tela, int orientacao);
 int testaColisaoy(peca* Peca, Tela* tela, int orientacao);
+void gravaPosicoesOcupadas(peca *peca, Tela* tela);
