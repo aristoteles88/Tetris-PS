@@ -5,6 +5,9 @@
 #include "tela.h"
 
 void tela_inicio(){
+	//Inicia Placar
+	cria_placar();
+
 	int tecla = 1;
     WINDOW *telaInicio=newwin(20,101,1,1);
     mvprintw(2,20,"///////// ///////// ///////// ////////  ///  ////////");
@@ -14,8 +17,16 @@ void tela_inicio(){
     mvprintw(6,20,"   ///    //           ///    //   //   ///        //");
     mvprintw(7,20,"   ///    //           ///    //    //  ///        //");
     mvprintw(8,20,"   ///    /////////    ///    //     // /// //////// ");
-    mvprintw(20,30,"Pressione uma tecla para começar.");
-    tecla = pega_input(tecla);
+    mvprintw(20,20,"Insira seu nome de jogador para comecar.");
+		int i = 0;
+		do{
+			tecla = pega_input(tecla);
+			if ((tecla != '\n') && (tecla != '\t') && (tecla != '\b') && (tecla != '\r') && (tecla != ' ')){
+				aux[i] = (char) tecla;
+				mvprintw(12,i+20,"%c", aux[i]);
+				i++;
+			}
+		} while (tecla != '\n');
     erase();
     refresh();
 }
@@ -23,6 +34,10 @@ void tela_inicio(){
 void tela_fim(Tela* t, int tempo){
     WINDOW *telaFinal=newwin(20,102,1,1);
     int tecla = 1;
+
+		// Chama metodos de organizar e gravar pontuacao
+		atualiza_placar(aux, t->cont_pontuacao, tempo);
+		escreve_placar();
 
     do{
         mvprintw(2,1,"  /////////  ///////  //     //  /////////   ///////// //     // ///////// //////// ");
@@ -32,13 +47,15 @@ void tela_fim(Tela* t, int tempo){
         mvprintw(6,1,"  //     // //     // //     //  //          //     //  //   //  //        //   //  ");
         mvprintw(7,1,"  //     // //     // //     //  //          //     //   // //   //        //    // ");
         mvprintw(8,1,"  ///////// //     // //     //  /////////   /////////    ///    ///////// //     //");
-        mvprintw(20,30,"Sua pontuação foi: %d", t->cont_pontuacao);
-        mvprintw(21,30,"Tempo do jogo: %d", tempo);
-        mvprintw(23,30,"Pressione a tecla 'q' para encerrar.");
+        mvprintw(23,20,"Pressione a tecla 'q' para encerrar.");
+				mvprintw(13,20,"JOGADOR             PONTUACAO      TEMPO ");
+
+				// Chama função que imprime placar usando ncurses
+				mostra_placar();
         refresh();
         tecla = pega_input(tecla);
     }while(tecla != 'q');
-    
+
     erase();
     refresh();
 }
@@ -47,30 +64,30 @@ Tela *cria_tela(){
     Tela *tela;
     WINDOW *Jogo, *Pontuacao;
     int pontos=0;
-    
+
     mvprintw(2,45,"TETRIS");
     refresh();
-    
+
     tela = malloc(sizeof(Tela));
-    
+
     Jogo = newwin(15, 25, 6, 35);
     tela->janela_jogo = Jogo;
     wbkgd(tela->janela_jogo,COLOR_PAIR(1));
     box(tela->janela_jogo, ACS_VLINE, ACS_HLINE);
-    
+
     Pontuacao = newwin(3, 25, 3, 35);
     tela->janela_pontuacao = Pontuacao;
     wbkgd(tela->janela_pontuacao,COLOR_PAIR(1));
     box(tela->janela_pontuacao, ACS_VLINE, ACS_HLINE);
 
 	mostraLinhaLimite(tela);
-	
+
     tela->cont_pontuacao = pontos;
-     
+
     tela->Game_over = 0;
-    
+
     tela->peca_encaixada = 0;
-	
+
 	for(int i = 0; i < QUANTIDADE_COLUNAS; i++){
 		for(int j = 0; j < QUANTIDADE_LINHAS; j++){
 			tela->PosicoesOcupadas[i][j] = 0;
@@ -96,7 +113,7 @@ void mostra_tela(Tela *t){
 	mostraLinhaLimite(t);
     wrefresh(t->janela_jogo);
     wrefresh(t->janela_pontuacao);
-    
+
 }
 
 void verifica_linhas(Tela* tela){

@@ -1,3 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ncurses.h>
+//#include <time.h>
+
 #define ARQUIVO_PONTUACAO "placar.txt"
 
 typedef struct{

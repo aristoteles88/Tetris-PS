@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <ncurses.h>
 #include "engine.h"
+#include "placar.h"
+
+char aux[20];
 
 #define QUANTIDADE_LINHAS 15
 #define QUANTIDADE_COLUNAS 25
