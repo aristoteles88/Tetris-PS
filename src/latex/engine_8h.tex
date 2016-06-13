@@ -1,0 +1,50 @@
+\hypertarget{engine_8h}{}\section{Referência do Arquivo engine.\+h}
+\label{engine_8h}\index{engine.\+h@{engine.\+h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$ncurses.\+h$>$}\\*
+Gráfico de dependência de inclusões para engine.\+h\+:
+% FIG 0
+Este grafo mostra quais arquivos estão direta ou indiretamente relacionados com este arquivo\+:
+% FIG 1
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{engine_8h_a7a0d6a95bdaa10db7c050b21fe084b49}{inicia\+\_\+ncurses} ()
+\item 
+void \hyperlink{engine_8h_a2f1d963decc31d951961b439eae2fd82}{finaliza\+\_\+ncurses} ()
+\item 
+int \hyperlink{engine_8h_abc86a64881a468da2abb45be03fd1f60}{pega\+\_\+input} (int input)
+\end{DoxyCompactItemize}
+
+
+\subsection{Funções}
+\hypertarget{engine_8h_a2f1d963decc31d951961b439eae2fd82}{}\index{engine.\+h@{engine.\+h}!finaliza\+\_\+ncurses@{finaliza\+\_\+ncurses}}
+\index{finaliza\+\_\+ncurses@{finaliza\+\_\+ncurses}!engine.\+h@{engine.\+h}}
+\subsubsection[{finaliza\+\_\+ncurses}]{\setlength{\rightskip}{0pt plus 5cm}void finaliza\+\_\+ncurses (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{engine_8h_a2f1d963decc31d951961b439eae2fd82}
+Apaga tela e finaliza ncurses. \hypertarget{engine_8h_a7a0d6a95bdaa10db7c050b21fe084b49}{}\index{engine.\+h@{engine.\+h}!inicia\+\_\+ncurses@{inicia\+\_\+ncurses}}
+\index{inicia\+\_\+ncurses@{inicia\+\_\+ncurses}!engine.\+h@{engine.\+h}}
+\subsubsection[{inicia\+\_\+ncurses}]{\setlength{\rightskip}{0pt plus 5cm}void inicia\+\_\+ncurses (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{engine_8h_a7a0d6a95bdaa10db7c050b21fe084b49}
+inicia ncurses e inicializa a paleta de cores da tela. \hypertarget{engine_8h_abc86a64881a468da2abb45be03fd1f60}{}\index{engine.\+h@{engine.\+h}!pega\+\_\+input@{pega\+\_\+input}}
+\index{pega\+\_\+input@{pega\+\_\+input}!engine.\+h@{engine.\+h}}
+\subsubsection[{pega\+\_\+input}]{\setlength{\rightskip}{0pt plus 5cm}int pega\+\_\+input (
+\begin{DoxyParamCaption}
+\item[{int}]{input}
+\end{DoxyParamCaption}
+)}\label{engine_8h_abc86a64881a468da2abb45be03fd1f60}
+Captura um char e o retorna um int. Usado para receber comando do tetris. 
+\begin{DoxyParams}{Parâmetros}
+{\em input} & um int \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}

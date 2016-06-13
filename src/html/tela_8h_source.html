@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tetris-PS: Código-Fonte de tela.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tetris-PS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="globals.html"><span>Membros&#160;dos&#160;Arquivos</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">tela.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="tela_8h.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;ncurses.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="engine_8h.html">engine.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="placar_8h.html">placar.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="tela_8h.html#ad146a4a62926808b3393dac40a38e567">    7</a></span>&#160;<span class="keywordtype">char</span> <a class="code" href="tela_8h.html#ad146a4a62926808b3393dac40a38e567">nome_jogador</a>[20];</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="tela_8h.html#a6008341dc32241195c0d14dbc6654cf0">    9</a></span>&#160;<span class="preprocessor">#define QUANTIDADE_LINHAS 15</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="tela_8h.html#ad909c6f1c86572916e7cc629ce71fca3">   10</a></span>&#160;<span class="preprocessor">#define QUANTIDADE_COLUNAS 25</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structTela.html">   16</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structTela.html#afd07bc2b482faca8e135454373b05abb">   17</a></span>&#160;    WINDOW *janela_jogo, *<a class="code" href="structTela.html#afd07bc2b482faca8e135454373b05abb">janela_pontuacao</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structTela.html#a7d45fe01c75d7df950c6b310e45b1b2f">   18</a></span>&#160;    <span class="keywordtype">int</span> PosicoesOcupadas[<a class="code" href="tela_8h.html#ad909c6f1c86572916e7cc629ce71fca3">QUANTIDADE_COLUNAS</a>][<a class="code" href="tela_8h.html#a6008341dc32241195c0d14dbc6654cf0">QUANTIDADE_LINHAS</a>]; <span class="comment">//O valor das casas representa a cor da peça encaixada naquela posicao. Valor igual a 0 indica posição desocupada.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structTela.html#a06de9598d629a343e01fa07a04e9bb84">   19</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structTela.html#a06de9598d629a343e01fa07a04e9bb84">cont_pontuacao</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structTela.html#a3715c9d5715131201a83938082a64e9b">   20</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structTela.html#a3715c9d5715131201a83938082a64e9b">Game_over</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structTela.html#a8663da4a190f026cb9c2242bee520d78">   21</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structTela.html#a8663da4a190f026cb9c2242bee520d78">peca_encaixada</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structTela.html#ae40ae85a9b202cdabf66dee38df39529">   22</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structTela.html#ae40ae85a9b202cdabf66dee38df39529">cor</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}<a class="code" href="structTela.html">Tela</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">void</span> <a class="code" href="tela_8h.html#adf4cfb20169dc493185fd972cba73cd3">tela_inicio</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> <a class="code" href="tela_8h.html#a8f80c5bf3f43b7dd5469a43549e24273">mostraLinhaLimite</a>(<a class="code" href="structTela.html">Tela</a> *tela);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<a class="code" href="structTela.html">Tela</a> *<a class="code" href="tela_8h.html#a805944db0a5d6f162cc87327fb1c22d6">cria_tela</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">void</span> <a class="code" href="tela_8h.html#a634ffbfc084eb1d0e5f700d9d97d9fbf">tela_fim</a>(<a class="code" href="structTela.html">Tela</a> *tela, <span class="keywordtype">int</span> tempo);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">void</span> <a class="code" href="tela_8h.html#adc2bcb65fddf78d7ffb5f6c77d3fe15a">mostra_tela</a>(<a class="code" href="structTela.html">Tela</a>* tela);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="tela_8h.html#a9f463a9613c727625b7c27ecbabf0b53">verifica_linhas</a>(<a class="code" href="structTela.html">Tela</a>* tela);</div>
+<div class="ttc" id="structTela_html_afd07bc2b482faca8e135454373b05abb"><div class="ttname"><a href="structTela.html#afd07bc2b482faca8e135454373b05abb">Tela::janela_pontuacao</a></div><div class="ttdeci">WINDOW * janela_pontuacao</div><div class="ttdef"><b>Definition:</b> tela.h:17</div></div>
+<div class="ttc" id="engine_8h_html"><div class="ttname"><a href="engine_8h.html">engine.h</a></div></div>
+<div class="ttc" id="tela_8h_html_adf4cfb20169dc493185fd972cba73cd3"><div class="ttname"><a href="tela_8h.html#adf4cfb20169dc493185fd972cba73cd3">tela_inicio</a></div><div class="ttdeci">void tela_inicio()</div><div class="ttdef"><b>Definition:</b> tela.c:7</div></div>
+<div class="ttc" id="structTela_html_ae40ae85a9b202cdabf66dee38df39529"><div class="ttname"><a href="structTela.html#ae40ae85a9b202cdabf66dee38df39529">Tela::cor</a></div><div class="ttdeci">int cor</div><div class="ttdef"><b>Definition:</b> tela.h:22</div></div>
+<div class="ttc" id="tela_8h_html_a8f80c5bf3f43b7dd5469a43549e24273"><div class="ttname"><a href="tela_8h.html#a8f80c5bf3f43b7dd5469a43549e24273">mostraLinhaLimite</a></div><div class="ttdeci">void mostraLinhaLimite(Tela *tela)</div><div class="ttdef"><b>Definition:</b> tela.c:99</div></div>
+<div class="ttc" id="tela_8h_html_ad146a4a62926808b3393dac40a38e567"><div class="ttname"><a href="tela_8h.html#ad146a4a62926808b3393dac40a38e567">nome_jogador</a></div><div class="ttdeci">char nome_jogador[20]</div><div class="ttdef"><b>Definition:</b> tela.h:7</div></div>
+<div class="ttc" id="structTela_html_a8663da4a190f026cb9c2242bee520d78"><div class="ttname"><a href="structTela.html#a8663da4a190f026cb9c2242bee520d78">Tela::peca_encaixada</a></div><div class="ttdeci">int peca_encaixada</div><div class="ttdef"><b>Definition:</b> tela.h:21</div></div>
+<div class="ttc" id="tela_8h_html_a634ffbfc084eb1d0e5f700d9d97d9fbf"><div class="ttname"><a href="tela_8h.html#a634ffbfc084eb1d0e5f700d9d97d9fbf">tela_fim</a></div><div class="ttdeci">void tela_fim(Tela *tela, int tempo)</div><div class="ttdef"><b>Definition:</b> tela.c:34</div></div>
+<div class="ttc" id="tela_8h_html_a805944db0a5d6f162cc87327fb1c22d6"><div class="ttname"><a href="tela_8h.html#a805944db0a5d6f162cc87327fb1c22d6">cria_tela</a></div><div class="ttdeci">Tela * cria_tela()</div><div class="ttdef"><b>Definition:</b> tela.c:63</div></div>
+<div class="ttc" id="tela_8h_html_adc2bcb65fddf78d7ffb5f6c77d3fe15a"><div class="ttname"><a href="tela_8h.html#adc2bcb65fddf78d7ffb5f6c77d3fe15a">mostra_tela</a></div><div class="ttdeci">void mostra_tela(Tela *tela)</div><div class="ttdef"><b>Definition:</b> tela.c:111</div></div>
+<div class="ttc" id="structTela_html_a06de9598d629a343e01fa07a04e9bb84"><div class="ttname"><a href="structTela.html#a06de9598d629a343e01fa07a04e9bb84">Tela::cont_pontuacao</a></div><div class="ttdeci">int cont_pontuacao</div><div class="ttdef"><b>Definition:</b> tela.h:19</div></div>
+<div class="ttc" id="structTela_html_a3715c9d5715131201a83938082a64e9b"><div class="ttname"><a href="structTela.html#a3715c9d5715131201a83938082a64e9b">Tela::Game_over</a></div><div class="ttdeci">int Game_over</div><div class="ttdef"><b>Definition:</b> tela.h:20</div></div>
+<div class="ttc" id="tela_8h_html_ad909c6f1c86572916e7cc629ce71fca3"><div class="ttname"><a href="tela_8h.html#ad909c6f1c86572916e7cc629ce71fca3">QUANTIDADE_COLUNAS</a></div><div class="ttdeci">#define QUANTIDADE_COLUNAS</div><div class="ttdef"><b>Definition:</b> tela.h:10</div></div>
+<div class="ttc" id="tela_8h_html_a6008341dc32241195c0d14dbc6654cf0"><div class="ttname"><a href="tela_8h.html#a6008341dc32241195c0d14dbc6654cf0">QUANTIDADE_LINHAS</a></div><div class="ttdeci">#define QUANTIDADE_LINHAS</div><div class="ttdef"><b>Definition:</b> tela.h:9</div></div>
+<div class="ttc" id="structTela_html"><div class="ttname"><a href="structTela.html">Tela</a></div><div class="ttdef"><b>Definition:</b> tela.h:16</div></div>
+<div class="ttc" id="tela_8h_html_a9f463a9613c727625b7c27ecbabf0b53"><div class="ttname"><a href="tela_8h.html#a9f463a9613c727625b7c27ecbabf0b53">verifica_linhas</a></div><div class="ttdeci">void verifica_linhas(Tela *tela)</div><div class="ttdef"><b>Definition:</b> tela.c:119</div></div>
+<div class="ttc" id="placar_8h_html"><div class="ttname"><a href="placar_8h.html">placar.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado em Segunda, 13 de Junho de 2016 18:34:31 para Tetris-PS por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

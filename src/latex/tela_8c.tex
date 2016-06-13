@@ -1,0 +1,112 @@
+\hypertarget{tela_8c}{}\section{Referência do Arquivo tela.\+c}
+\label{tela_8c}\index{tela.\+c@{tela.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$ncurses.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}tela.\+h\char`\"{}}\\*
+Gráfico de dependência de inclusões para tela.\+c\+:
+% FIG 0
+Este grafo mostra quais arquivos estão direta ou indiretamente relacionados com este arquivo\+:
+% FIG 1
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{tela_8c_adf4cfb20169dc493185fd972cba73cd3}{tela\+\_\+inicio} ()
+\item 
+void \hyperlink{tela_8c_a812ec1cb01cec0376e000135ef604f3f}{tela\+\_\+fim} (\hyperlink{structTela}{Tela} $\ast$t, int tempo)
+\item 
+\hyperlink{structTela}{Tela} $\ast$ \hyperlink{tela_8c_a805944db0a5d6f162cc87327fb1c22d6}{cria\+\_\+tela} ()
+\item 
+void \hyperlink{tela_8c_a8f80c5bf3f43b7dd5469a43549e24273}{mostra\+Linha\+Limite} (\hyperlink{structTela}{Tela} $\ast$tela)
+\item 
+void \hyperlink{tela_8c_a77aac4f9797cae74e450b915b01931ca}{mostra\+\_\+tela} (\hyperlink{structTela}{Tela} $\ast$t)
+\item 
+void \hyperlink{tela_8c_a9f463a9613c727625b7c27ecbabf0b53}{verifica\+\_\+linhas} (\hyperlink{structTela}{Tela} $\ast$tela)
+\end{DoxyCompactItemize}
+
+
+\subsection{Funções}
+\hypertarget{tela_8c_a805944db0a5d6f162cc87327fb1c22d6}{}\index{tela.\+c@{tela.\+c}!cria\+\_\+tela@{cria\+\_\+tela}}
+\index{cria\+\_\+tela@{cria\+\_\+tela}!tela.\+c@{tela.\+c}}
+\subsubsection[{cria\+\_\+tela}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tela}$\ast$ cria\+\_\+tela (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{tela_8c_a805944db0a5d6f162cc87327fb1c22d6}
+inicializa variaveis usadas na formação da tela, incluindo a matriz de posicoes. \begin{DoxyReturn}{Retorna}
+\hyperlink{structTela}{Tela} 
+\end{DoxyReturn}
+\hypertarget{tela_8c_a77aac4f9797cae74e450b915b01931ca}{}\index{tela.\+c@{tela.\+c}!mostra\+\_\+tela@{mostra\+\_\+tela}}
+\index{mostra\+\_\+tela@{mostra\+\_\+tela}!tela.\+c@{tela.\+c}}
+\subsubsection[{mostra\+\_\+tela}]{\setlength{\rightskip}{0pt plus 5cm}void mostra\+\_\+tela (
+\begin{DoxyParamCaption}
+\item[{{\bf Tela} $\ast$}]{tela}
+\end{DoxyParamCaption}
+)}\label{tela_8c_a77aac4f9797cae74e450b915b01931ca}
+Só mostra a tela mesmo. 
+\begin{DoxyParams}{Parâmetros}
+{\em tela} & tipo \hyperlink{structTela}{Tela} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{tela_8c_a8f80c5bf3f43b7dd5469a43549e24273}{}\index{tela.\+c@{tela.\+c}!mostra\+Linha\+Limite@{mostra\+Linha\+Limite}}
+\index{mostra\+Linha\+Limite@{mostra\+Linha\+Limite}!tela.\+c@{tela.\+c}}
+\subsubsection[{mostra\+Linha\+Limite}]{\setlength{\rightskip}{0pt plus 5cm}void mostra\+Linha\+Limite (
+\begin{DoxyParamCaption}
+\item[{{\bf Tela} $\ast$}]{tela}
+\end{DoxyParamCaption}
+)}\label{tela_8c_a8f80c5bf3f43b7dd5469a43549e24273}
+Imprime linha que representa o limite ou as paredes do tetris. 
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$tela} & tipo \hyperlink{structTela}{Tela} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{tela_8c_a812ec1cb01cec0376e000135ef604f3f}{}\index{tela.\+c@{tela.\+c}!tela\+\_\+fim@{tela\+\_\+fim}}
+\index{tela\+\_\+fim@{tela\+\_\+fim}!tela.\+c@{tela.\+c}}
+\subsubsection[{tela\+\_\+fim}]{\setlength{\rightskip}{0pt plus 5cm}void tela\+\_\+fim (
+\begin{DoxyParamCaption}
+\item[{{\bf Tela} $\ast$}]{tela, }
+\item[{int}]{tempo}
+\end{DoxyParamCaption}
+)}\label{tela_8c_a812ec1cb01cec0376e000135ef604f3f}
+Imprime a tela de final (game over) e chama metodos de gravar pontuacao em arquivo, do modulo placar. 
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$tela} & tipo \hyperlink{structTela}{Tela} \\
+\hline
+{\em tempo} & um int \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{tela_8c_adf4cfb20169dc493185fd972cba73cd3}{}\index{tela.\+c@{tela.\+c}!tela\+\_\+inicio@{tela\+\_\+inicio}}
+\index{tela\+\_\+inicio@{tela\+\_\+inicio}!tela.\+c@{tela.\+c}}
+\subsubsection[{tela\+\_\+inicio}]{\setlength{\rightskip}{0pt plus 5cm}void tela\+\_\+inicio (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{tela_8c_adf4cfb20169dc493185fd972cba73cd3}
+Imprime a tela de inicio, inicia o placar e recebe o nome do jogador. \begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{tela_8c_a9f463a9613c727625b7c27ecbabf0b53}{}\index{tela.\+c@{tela.\+c}!verifica\+\_\+linhas@{verifica\+\_\+linhas}}
+\index{verifica\+\_\+linhas@{verifica\+\_\+linhas}!tela.\+c@{tela.\+c}}
+\subsubsection[{verifica\+\_\+linhas}]{\setlength{\rightskip}{0pt plus 5cm}void verifica\+\_\+linhas (
+\begin{DoxyParamCaption}
+\item[{{\bf Tela} $\ast$}]{tela}
+\end{DoxyParamCaption}
+)}\label{tela_8c_a9f463a9613c727625b7c27ecbabf0b53}
+Verifica se linha foi completada e conta na pontuacao. 
+\begin{DoxyParams}{Parâmetros}
+{\em tela} & tipo \hyperlink{structTela}{Tela} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}

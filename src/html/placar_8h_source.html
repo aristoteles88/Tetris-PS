@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tetris-PS: Código-Fonte de placar.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tetris-PS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="globals.html"><span>Membros&#160;dos&#160;Arquivos</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">placar.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="placar_8h.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;ncurses.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="placar_8h.html#a857eecb0255d170b23fb86f3ccd706b5">    6</a></span>&#160;<span class="preprocessor">#define ARQUIVO_PONTUACAO &quot;placar.txt&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structPONTUACAO.html">   11</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structPONTUACAO.html#a0f853ffda20a3e76687d2d1b9d7d1cf6">   12</a></span>&#160;    <span class="keywordtype">char</span> player[20];</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structPONTUACAO.html#a773ef71e188a3e55bf7d0bdafa54afdb">   13</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structPONTUACAO.html#a773ef71e188a3e55bf7d0bdafa54afdb">pontos</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structPONTUACAO.html#ae90e645ea891d3dff0d43b9a191b4d89">   14</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structPONTUACAO.html#ae90e645ea891d3dff0d43b9a191b4d89">tempo</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}<a class="code" href="structPONTUACAO.html">PONTUACAO</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="placar_8h.html#ad196b498cec71fa543f6176a5017942e">   17</a></span>&#160;<a class="code" href="structPONTUACAO.html">PONTUACAO</a>* <a class="code" href="placar_8h.html#ad196b498cec71fa543f6176a5017942e">pontuacao</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">void</span> <a class="code" href="placar_8h.html#afaa919171c608594dab5d2e7f13ea9df">cria_placar</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> <a class="code" href="placar_8h.html#a713a19545c03f9a224fed59cab1bd3de">atualiza_placar</a>(<span class="keywordtype">char</span> *player, <span class="keywordtype">int</span> pontos, <span class="keywordtype">int</span> tempo);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> <a class="code" href="placar_8h.html#a61ca71498563eaf37dff857f8fbd0276">mostra_placar</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> <a class="code" href="placar_8h.html#a7a1ba64263384b8f9ba2ccf5ed8e6672">escreve_placar</a>();</div>
+<div class="ttc" id="structPONTUACAO_html_ae90e645ea891d3dff0d43b9a191b4d89"><div class="ttname"><a href="structPONTUACAO.html#ae90e645ea891d3dff0d43b9a191b4d89">PONTUACAO::tempo</a></div><div class="ttdeci">int tempo</div><div class="ttdef"><b>Definition:</b> placar.h:14</div></div>
+<div class="ttc" id="placar_8h_html_afaa919171c608594dab5d2e7f13ea9df"><div class="ttname"><a href="placar_8h.html#afaa919171c608594dab5d2e7f13ea9df">cria_placar</a></div><div class="ttdeci">void cria_placar()</div><div class="ttdef"><b>Definition:</b> placar.c:8</div></div>
+<div class="ttc" id="placar_8h_html_a713a19545c03f9a224fed59cab1bd3de"><div class="ttname"><a href="placar_8h.html#a713a19545c03f9a224fed59cab1bd3de">atualiza_placar</a></div><div class="ttdeci">void atualiza_placar(char *player, int pontos, int tempo)</div><div class="ttdef"><b>Definition:</b> placar.c:35</div></div>
+<div class="ttc" id="placar_8h_html_a61ca71498563eaf37dff857f8fbd0276"><div class="ttname"><a href="placar_8h.html#a61ca71498563eaf37dff857f8fbd0276">mostra_placar</a></div><div class="ttdeci">void mostra_placar()</div><div class="ttdef"><b>Definition:</b> placar.c:67</div></div>
+<div class="ttc" id="structPONTUACAO_html_a773ef71e188a3e55bf7d0bdafa54afdb"><div class="ttname"><a href="structPONTUACAO.html#a773ef71e188a3e55bf7d0bdafa54afdb">PONTUACAO::pontos</a></div><div class="ttdeci">int pontos</div><div class="ttdef"><b>Definition:</b> placar.h:13</div></div>
+<div class="ttc" id="placar_8h_html_a7a1ba64263384b8f9ba2ccf5ed8e6672"><div class="ttname"><a href="placar_8h.html#a7a1ba64263384b8f9ba2ccf5ed8e6672">escreve_placar</a></div><div class="ttdeci">void escreve_placar()</div><div class="ttdef"><b>Definition:</b> placar.c:76</div></div>
+<div class="ttc" id="placar_8h_html_ad196b498cec71fa543f6176a5017942e"><div class="ttname"><a href="placar_8h.html#ad196b498cec71fa543f6176a5017942e">pontuacao</a></div><div class="ttdeci">PONTUACAO * pontuacao</div><div class="ttdef"><b>Definition:</b> placar.h:17</div></div>
+<div class="ttc" id="structPONTUACAO_html"><div class="ttname"><a href="structPONTUACAO.html">PONTUACAO</a></div><div class="ttdef"><b>Definition:</b> placar.h:11</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado em Segunda, 13 de Junho de 2016 18:34:31 para Tetris-PS por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,76 @@
+\hypertarget{placar_8c}{}\section{Referência do Arquivo placar.\+c}
+\label{placar_8c}\index{placar.\+c@{placar.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$ncurses.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}placar.\+h\char`\"{}}\\*
+Gráfico de dependência de inclusões para placar.\+c\+:
+% FIG 0
+Este grafo mostra quais arquivos estão direta ou indiretamente relacionados com este arquivo\+:
+% FIG 1
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{placar_8c_afaa919171c608594dab5d2e7f13ea9df}{cria\+\_\+placar} ()
+\item 
+void \hyperlink{placar_8c_a713a19545c03f9a224fed59cab1bd3de}{atualiza\+\_\+placar} (char $\ast$player, int pontos, int tempo)
+\item 
+void \hyperlink{placar_8c_a61ca71498563eaf37dff857f8fbd0276}{mostra\+\_\+placar} ()
+\item 
+void \hyperlink{placar_8c_a7a1ba64263384b8f9ba2ccf5ed8e6672}{escreve\+\_\+placar} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Funções}
+\hypertarget{placar_8c_a713a19545c03f9a224fed59cab1bd3de}{}\index{placar.\+c@{placar.\+c}!atualiza\+\_\+placar@{atualiza\+\_\+placar}}
+\index{atualiza\+\_\+placar@{atualiza\+\_\+placar}!placar.\+c@{placar.\+c}}
+\subsubsection[{atualiza\+\_\+placar}]{\setlength{\rightskip}{0pt plus 5cm}void atualiza\+\_\+placar (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{player, }
+\item[{int}]{pontos, }
+\item[{int}]{tempo}
+\end{DoxyParamCaption}
+)}\label{placar_8c_a713a19545c03f9a224fed59cab1bd3de}
+Ordena placar por ordem de maior pontuacao para a menor. 
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$player} & um char \\
+\hline
+{\em pontos} & um int \\
+\hline
+{\em tempo} & um int \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{placar_8c_afaa919171c608594dab5d2e7f13ea9df}{}\index{placar.\+c@{placar.\+c}!cria\+\_\+placar@{cria\+\_\+placar}}
+\index{cria\+\_\+placar@{cria\+\_\+placar}!placar.\+c@{placar.\+c}}
+\subsubsection[{cria\+\_\+placar}]{\setlength{\rightskip}{0pt plus 5cm}void cria\+\_\+placar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{placar_8c_afaa919171c608594dab5d2e7f13ea9df}
+Instancia placar pontuacao, le arquivo e popula o vetor de pontuacao. \begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{placar_8c_a7a1ba64263384b8f9ba2ccf5ed8e6672}{}\index{placar.\+c@{placar.\+c}!escreve\+\_\+placar@{escreve\+\_\+placar}}
+\index{escreve\+\_\+placar@{escreve\+\_\+placar}!placar.\+c@{placar.\+c}}
+\subsubsection[{escreve\+\_\+placar}]{\setlength{\rightskip}{0pt plus 5cm}void escreve\+\_\+placar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{placar_8c_a7a1ba64263384b8f9ba2ccf5ed8e6672}
+Escreve o placar atualizado no arquivo. \begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{placar_8c_a61ca71498563eaf37dff857f8fbd0276}{}\index{placar.\+c@{placar.\+c}!mostra\+\_\+placar@{mostra\+\_\+placar}}
+\index{mostra\+\_\+placar@{mostra\+\_\+placar}!placar.\+c@{placar.\+c}}
+\subsubsection[{mostra\+\_\+placar}]{\setlength{\rightskip}{0pt plus 5cm}void mostra\+\_\+placar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{placar_8c_a61ca71498563eaf37dff857f8fbd0276}
+Imprime placar na tela usando ncurses. \begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}

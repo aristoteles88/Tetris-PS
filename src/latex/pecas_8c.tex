@@ -1,0 +1,247 @@
+\hypertarget{pecas_8c}{}\section{Referência do Arquivo pecas.\+c}
+\label{pecas_8c}\index{pecas.\+c@{pecas.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$ncurses.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}pecas.\+h\char`\"{}}\\*
+Gráfico de dependência de inclusões para pecas.\+c\+:
+% FIG 0
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{pecas_8c_ac1720c923b54238592f57d5a90f8ae32}{nova\+\_\+peca} (\hyperlink{structpeca}{peca} $\ast$Nova\+Peca, \hyperlink{structTela}{Tela} $\ast$tela)
+\item 
+void \hyperlink{pecas_8c_acdaea9e85f1cf2ff0b63aff98cb510f2}{escreve\+Peca} (\hyperlink{structpeca}{peca} $\ast$\hyperlink{structpeca}{peca}, \hyperlink{structTela}{Tela} $\ast$tela)
+\item 
+void \hyperlink{pecas_8c_aed07d85f0bb52915a63d7ff03297a28f}{rotaciona\+Peca} (\hyperlink{structpeca}{peca} $\ast$\hyperlink{structpeca}{peca})
+\item 
+void \hyperlink{pecas_8c_a9112d8865671ef615a7de163dedadebd}{move\+\_\+peca} (\hyperlink{structpeca}{peca} $\ast$Peca, \hyperlink{structTela}{Tela} $\ast$interface\+Jogo, int movimento)
+\item 
+void \hyperlink{pecas_8c_a4d9b63bce6d634f207760209b44de3e2}{move\+\_\+peca\+\_\+x} (\hyperlink{structpeca}{peca} $\ast$\hyperlink{structpeca}{peca}, \hyperlink{structTela}{Tela} $\ast$tela, int x)
+\item 
+void \hyperlink{pecas_8c_abd266d41b6b2edcf6a8c5ec4034734a1}{move\+\_\+peca\+\_\+y} (\hyperlink{structpeca}{peca} $\ast$\hyperlink{structpeca}{peca}, \hyperlink{structTela}{Tela} $\ast$tela, int y)
+\item 
+void \hyperlink{pecas_8c_ab13506d5fd772a51b3cd889a0bf6b89a}{limpa\+\_\+peca} (\hyperlink{structpeca}{peca} $\ast$\hyperlink{structpeca}{peca}, \hyperlink{structTela}{Tela} $\ast$tela)
+\item 
+void \hyperlink{pecas_8c_afb2fca1280e88039e76e192b501cafe5}{testa\+\_\+limite} (\hyperlink{structpeca}{peca} $\ast$\hyperlink{structpeca}{peca}, \hyperlink{structTela}{Tela} $\ast$tela)
+\item 
+int \hyperlink{pecas_8c_a105bcfaab553739d5479b80c7c5987bb}{testa\+Colisaox} (\hyperlink{structpeca}{peca} $\ast$Peca, \hyperlink{structTela}{Tela} $\ast$tela, int orientacao)
+\item 
+int \hyperlink{pecas_8c_acd5faa8009716386d01ec08dd020fe45}{testa\+Colisaoy} (\hyperlink{structpeca}{peca} $\ast$Peca, \hyperlink{structTela}{Tela} $\ast$tela, int orientacao)
+\item 
+void \hyperlink{pecas_8c_a18ed84b185c699a71532b584333c81e3}{grava\+Posicoes\+Ocupadas} (\hyperlink{structpeca}{peca} $\ast$\hyperlink{structpeca}{peca}, \hyperlink{structTela}{Tela} $\ast$tela)
+\end{DoxyCompactItemize}
+
+
+\subsection{Funções}
+\hypertarget{pecas_8c_acdaea9e85f1cf2ff0b63aff98cb510f2}{}\index{pecas.\+c@{pecas.\+c}!escreve\+Peca@{escreve\+Peca}}
+\index{escreve\+Peca@{escreve\+Peca}!pecas.\+c@{pecas.\+c}}
+\subsubsection[{escreve\+Peca}]{\setlength{\rightskip}{0pt plus 5cm}void escreve\+Peca (
+\begin{DoxyParamCaption}
+\item[{{\bf peca} $\ast$}]{peca, }
+\item[{{\bf Tela} $\ast$}]{tela}
+\end{DoxyParamCaption}
+)}\label{pecas_8c_acdaea9e85f1cf2ff0b63aff98cb510f2}
+Escreve peca 
+\begin{DoxyParams}{Parâmetros}
+{\em peca} & uma peca \\
+\hline
+{\em $\ast$tela} & instancia da tela a ser modificada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{pecas_8c_a18ed84b185c699a71532b584333c81e3}{}\index{pecas.\+c@{pecas.\+c}!grava\+Posicoes\+Ocupadas@{grava\+Posicoes\+Ocupadas}}
+\index{grava\+Posicoes\+Ocupadas@{grava\+Posicoes\+Ocupadas}!pecas.\+c@{pecas.\+c}}
+\subsubsection[{grava\+Posicoes\+Ocupadas}]{\setlength{\rightskip}{0pt plus 5cm}void grava\+Posicoes\+Ocupadas (
+\begin{DoxyParamCaption}
+\item[{{\bf peca} $\ast$}]{peca, }
+\item[{{\bf Tela} $\ast$}]{tela}
+\end{DoxyParamCaption}
+)}\label{pecas_8c_a18ed84b185c699a71532b584333c81e3}
+Grava Posicoes Ocupadas 
+\begin{DoxyParams}{Parâmetros}
+{\em peca} & uma peca \\
+\hline
+{\em $\ast$tela} & instancia da tela a ser modificada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{pecas_8c_ab13506d5fd772a51b3cd889a0bf6b89a}{}\index{pecas.\+c@{pecas.\+c}!limpa\+\_\+peca@{limpa\+\_\+peca}}
+\index{limpa\+\_\+peca@{limpa\+\_\+peca}!pecas.\+c@{pecas.\+c}}
+\subsubsection[{limpa\+\_\+peca}]{\setlength{\rightskip}{0pt plus 5cm}void limpa\+\_\+peca (
+\begin{DoxyParamCaption}
+\item[{{\bf peca} $\ast$}]{peca, }
+\item[{{\bf Tela} $\ast$}]{tela}
+\end{DoxyParamCaption}
+)}\label{pecas_8c_ab13506d5fd772a51b3cd889a0bf6b89a}
+Limpa peca 
+\begin{DoxyParams}{Parâmetros}
+{\em peca} & uma peca \\
+\hline
+{\em $\ast$tela} & instancia da tela a ser modificada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{pecas_8c_a9112d8865671ef615a7de163dedadebd}{}\index{pecas.\+c@{pecas.\+c}!move\+\_\+peca@{move\+\_\+peca}}
+\index{move\+\_\+peca@{move\+\_\+peca}!pecas.\+c@{pecas.\+c}}
+\subsubsection[{move\+\_\+peca}]{\setlength{\rightskip}{0pt plus 5cm}void move\+\_\+peca (
+\begin{DoxyParamCaption}
+\item[{{\bf peca} $\ast$}]{peca, }
+\item[{{\bf Tela} $\ast$}]{tela, }
+\item[{int}]{movimento}
+\end{DoxyParamCaption}
+)}\label{pecas_8c_a9112d8865671ef615a7de163dedadebd}
+Move peca 
+\begin{DoxyParams}{Parâmetros}
+{\em peca} & uma peca \\
+\hline
+{\em $\ast$tela} & instancia da tela a ser modificada \\
+\hline
+{\em movimento} & um int correspondendo um movimento \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{pecas_8c_a4d9b63bce6d634f207760209b44de3e2}{}\index{pecas.\+c@{pecas.\+c}!move\+\_\+peca\+\_\+x@{move\+\_\+peca\+\_\+x}}
+\index{move\+\_\+peca\+\_\+x@{move\+\_\+peca\+\_\+x}!pecas.\+c@{pecas.\+c}}
+\subsubsection[{move\+\_\+peca\+\_\+x}]{\setlength{\rightskip}{0pt plus 5cm}void move\+\_\+peca\+\_\+x (
+\begin{DoxyParamCaption}
+\item[{{\bf peca} $\ast$}]{peca, }
+\item[{{\bf Tela} $\ast$}]{tela, }
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)}\label{pecas_8c_a4d9b63bce6d634f207760209b44de3e2}
+Move peca na horizontal 
+\begin{DoxyParams}{Parâmetros}
+{\em peca} & uma peca \\
+\hline
+{\em $\ast$tela} & instancia da tela a ser modificada \\
+\hline
+{\em movimento} & um int correspondendo um movimento \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{pecas_8c_abd266d41b6b2edcf6a8c5ec4034734a1}{}\index{pecas.\+c@{pecas.\+c}!move\+\_\+peca\+\_\+y@{move\+\_\+peca\+\_\+y}}
+\index{move\+\_\+peca\+\_\+y@{move\+\_\+peca\+\_\+y}!pecas.\+c@{pecas.\+c}}
+\subsubsection[{move\+\_\+peca\+\_\+y}]{\setlength{\rightskip}{0pt plus 5cm}void move\+\_\+peca\+\_\+y (
+\begin{DoxyParamCaption}
+\item[{{\bf peca} $\ast$}]{peca, }
+\item[{{\bf Tela} $\ast$}]{tela, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}\label{pecas_8c_abd266d41b6b2edcf6a8c5ec4034734a1}
+Move peca na vertical 
+\begin{DoxyParams}{Parâmetros}
+{\em peca} & uma peca \\
+\hline
+{\em $\ast$tela} & instancia da tela a ser modificada \\
+\hline
+{\em movimento} & um int correspondendo um movimento \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{pecas_8c_ac1720c923b54238592f57d5a90f8ae32}{}\index{pecas.\+c@{pecas.\+c}!nova\+\_\+peca@{nova\+\_\+peca}}
+\index{nova\+\_\+peca@{nova\+\_\+peca}!pecas.\+c@{pecas.\+c}}
+\subsubsection[{nova\+\_\+peca}]{\setlength{\rightskip}{0pt plus 5cm}void nova\+\_\+peca (
+\begin{DoxyParamCaption}
+\item[{{\bf peca} $\ast$}]{peca, }
+\item[{{\bf Tela} $\ast$}]{tela}
+\end{DoxyParamCaption}
+)}\label{pecas_8c_ac1720c923b54238592f57d5a90f8ae32}
+Nova peca 
+\begin{DoxyParams}{Parâmetros}
+{\em peca} & uma peca a ser criada \\
+\hline
+{\em $\ast$tela} & instancia da tela a ser modificada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{pecas_8c_aed07d85f0bb52915a63d7ff03297a28f}{}\index{pecas.\+c@{pecas.\+c}!rotaciona\+Peca@{rotaciona\+Peca}}
+\index{rotaciona\+Peca@{rotaciona\+Peca}!pecas.\+c@{pecas.\+c}}
+\subsubsection[{rotaciona\+Peca}]{\setlength{\rightskip}{0pt plus 5cm}void rotaciona\+Peca (
+\begin{DoxyParamCaption}
+\item[{{\bf peca} $\ast$}]{peca}
+\end{DoxyParamCaption}
+)}\label{pecas_8c_aed07d85f0bb52915a63d7ff03297a28f}
+Rotaciona peca 
+\begin{DoxyParams}{Parâmetros}
+{\em peca} & uma peca a ser toracionada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{pecas_8c_afb2fca1280e88039e76e192b501cafe5}{}\index{pecas.\+c@{pecas.\+c}!testa\+\_\+limite@{testa\+\_\+limite}}
+\index{testa\+\_\+limite@{testa\+\_\+limite}!pecas.\+c@{pecas.\+c}}
+\subsubsection[{testa\+\_\+limite}]{\setlength{\rightskip}{0pt plus 5cm}void testa\+\_\+limite (
+\begin{DoxyParamCaption}
+\item[{{\bf peca} $\ast$}]{peca, }
+\item[{{\bf Tela} $\ast$}]{tela}
+\end{DoxyParamCaption}
+)}\label{pecas_8c_afb2fca1280e88039e76e192b501cafe5}
+Testa limite 
+\begin{DoxyParams}{Parâmetros}
+{\em peca} & uma peca \\
+\hline
+{\em $\ast$tela} & instancia da tela a ser modificada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{pecas_8c_a105bcfaab553739d5479b80c7c5987bb}{}\index{pecas.\+c@{pecas.\+c}!testa\+Colisaox@{testa\+Colisaox}}
+\index{testa\+Colisaox@{testa\+Colisaox}!pecas.\+c@{pecas.\+c}}
+\subsubsection[{testa\+Colisaox}]{\setlength{\rightskip}{0pt plus 5cm}int testa\+Colisaox (
+\begin{DoxyParamCaption}
+\item[{{\bf peca} $\ast$}]{Peca, }
+\item[{{\bf Tela} $\ast$}]{tela, }
+\item[{int}]{orientacao}
+\end{DoxyParamCaption}
+)}\label{pecas_8c_a105bcfaab553739d5479b80c7c5987bb}
+Testa colisao horizontal 
+\begin{DoxyParams}{Parâmetros}
+{\em peca} & uma peca \\
+\hline
+{\em $\ast$tela} & instancia da tela a ser modificada \\
+\hline
+{\em movimento} & um int de teste de colisao \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\hypertarget{pecas_8c_acd5faa8009716386d01ec08dd020fe45}{}\index{pecas.\+c@{pecas.\+c}!testa\+Colisaoy@{testa\+Colisaoy}}
+\index{testa\+Colisaoy@{testa\+Colisaoy}!pecas.\+c@{pecas.\+c}}
+\subsubsection[{testa\+Colisaoy}]{\setlength{\rightskip}{0pt plus 5cm}int testa\+Colisaoy (
+\begin{DoxyParamCaption}
+\item[{{\bf peca} $\ast$}]{Peca, }
+\item[{{\bf Tela} $\ast$}]{tela, }
+\item[{int}]{orientacao}
+\end{DoxyParamCaption}
+)}\label{pecas_8c_acd5faa8009716386d01ec08dd020fe45}
+Testa colisao vertical 
+\begin{DoxyParams}{Parâmetros}
+{\em peca} & uma peca \\
+\hline
+{\em $\ast$tela} & instancia da tela a ser modificada \\
+\hline
+{\em movimento} & um int de teste de colisao \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
