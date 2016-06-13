@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ncurses.h>
-//#include <time.h>
 #include "placar.h"
 
 // Abrindo e lendo arquivo e alocando espaco de memoria para o array de pontuacao

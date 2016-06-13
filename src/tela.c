@@ -17,16 +17,16 @@ void tela_inicio(){
     mvprintw(6,20,"   ///    //           ///    //   //   ///        //");
     mvprintw(7,20,"   ///    //           ///    //    //  ///        //");
     mvprintw(8,20,"   ///    /////////    ///    //     // /// //////// ");
-    mvprintw(20,20,"Insira seu nome de jogador para comecar.");
+    mvprintw(20,20,"Insira seu nome de jogador e aperte (Enter) para comecar.");
 		int i = 0;
 		do{
 			tecla = pega_input(tecla);
 			if ((tecla != '\n') && (tecla != '\t') && (tecla != '\b') && (tecla != '\r') && (tecla != ' ')){
-				aux[i] = (char) tecla;
-				mvprintw(12,i+20,"%c", aux[i]);
+				nome_jogador[i] = (char) tecla;
+				mvprintw(12,i+20,"%c", nome_jogador[i]);
 				i++;
 			}
-		} while (tecla != '\n');
+		} while ((tecla != '\n') && i < 20);
     erase();
     refresh();
 }
@@ -36,7 +36,7 @@ void tela_fim(Tela* t, int tempo){
     int tecla = 1;
 
 		// Chama metodos de organizar e gravar pontuacao
-		atualiza_placar(aux, t->cont_pontuacao, tempo);
+		atualiza_placar(nome_jogador, t->cont_pontuacao, tempo);
 		escreve_placar();
 
     do{

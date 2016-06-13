@@ -1,7 +1,7 @@
 Instruções do Jogo:
 
 -Primeiro execute o jogo digitando no terminal dentro da Pasta "src", "make all";
--Na primeira tela do jogo, aperte qualquer tecla para iniciar o mesmo;
+-Na primeira tela do jogo, insira seu nome de jogador e aperte "enter";
 -É possível movimentar cada peça, uma de cada vez, utilizando as setas respectivas do teclado;
 A seta para baixo movimenta a peça para baixo. A seta para a direita movimenta a seta para a direita;
 A seta para a esquerda movimenta a peça para a esquerda;
