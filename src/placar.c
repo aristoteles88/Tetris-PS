@@ -6,17 +6,17 @@
 
 // Abrindo e lendo arquivo e alocando espaco de memoria para o array de pontuacao
 void cria_placar(){
+  int i;
   FILE *fp;
   if (!(fp = fopen(ARQUIVO_PONTUACAO, "r+"))){
         printf("Erro! Impossivel abrir o arquivo!\n");
-        exit(1);
+        exit(0);
   }
 
   //PONTUACAO* aloca memoria do array pontuacao definido em placar.h
   pontuacao = malloc(5 * sizeof *pontuacao);
 
-  // Inicializa a pilha com valores neutros
-  int i = 0;
+  // Inicializa a pilha com valores neutro
   for (i = 0; i < 5; i++){
       strncpy(pontuacao[i].player, "-", 20);
       pontuacao[i].pontos = 0;
@@ -34,7 +34,7 @@ void cria_placar(){
 // Recebe nova pontuacao e reordena o array por ordem de maior pontuacao
 void atualiza_placar(char *player, int pontos, int tempo){
   char *player_aux;
-  int pontos_aux, tempo_aux;
+  int pontos_aux, tempo_aux, i, y;
 
   // Insere pontuacao no ranking caso ela seja maior do que a menor pontuacao
   if (pontos >= pontuacao[4].pontos){
@@ -44,7 +44,6 @@ void atualiza_placar(char *player, int pontos, int tempo){
   }
 
   // Ordena o ranking em orgem de maior pontuacao
-  int i, y;
   for (i = 0; i < 5; i++){
     for (y = i+1; y < 5; y++){
       if (pontuacao[i].pontos <= pontuacao[y].pontos){
@@ -75,36 +74,16 @@ void mostra_placar(){
 }
 
 void escreve_placar(){
+  int i;
   FILE *fp;
   if (!(fp = fopen(ARQUIVO_PONTUACAO, "w"))){
         printf("Erro! Impossivel abrir o arquivo!\n");
-        exit(1);
+        exit(0);
   }
 
   // Percorre array escrevendo pontuacao no arquivo
-  int i;
   for (i = 0; i < 5; i++)
     fprintf(fp, "%s %i %i\n", pontuacao[i].player, pontuacao[i].pontos, pontuacao[i].tempo);
   fflush(fp);
   fclose(fp);
 }
-/*
-int main(){
-  initscr();
-  start_color();
-
-  init_pair(1,COLOR_WHITE,COLOR_BLUE); //Texto(Branco) | Fundo(Azul)
-  init_pair(2,COLOR_BLUE,COLOR_WHITE); //Texto(Azul) | Fundo(Branco)
-  init_pair(3,COLOR_RED,COLOR_WHITE);  //Texto(Vermelho) | Fundo(Branco)
-  cria_placar();
-  atualiza_placar("Player2", 200, 10);
-  escreve_placar();
-  mostra_placar();
-  //cria_placar();
-  //atualiza_placar("Player", 100, 10);
-  //mostra_placar();
-  //escreve_placar();
-  int input = getch();
-  erase();
-  endwin();
-}*/
