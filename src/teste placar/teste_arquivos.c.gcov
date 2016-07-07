@@ -1,0 +1,89 @@
+        -:    0:Source:teste_arquivos.c
+        -:    0:Graph:teste_arquivos.gcno
+        -:    0:Data:teste_arquivos.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <string.h>
+        -:    4:#include <ncurses.h>
+        -:    5:
+        -:    6:#include "CUnit/CUnit.h"
+        -:    7:#include "CUnit/Basic.h"
+        -:    8:#include "../placar.c"
+        -:    9:
+        -:   10:void adicionar_suite(void);
+        -:   11:
+        -:   12:/*Abaixo estão as funções que efetuam os testes de arquivo
+        -:   13:/** Função cria_placar
+        -:   14:*/
+        -:   15:void teste_DT_Arquivo_Vazio(void);
+        -:   16:void teste_DT_Arquivo_Cheio(void);
+        -:   17:
+        1:   18:void teste_DT_Arquivo_Vazio(void){
+        -:   19:  FILE *fp;
+        -:   20:  int result;
+        -:   21:
+        1:   22:  if (!(fp = fopen("placar.txt", "r+"))){
+    #####:   23:        printf("Erro! Impossivel abrir o arquivo!\n");
+    #####:   24:        exit(0);
+        -:   25:  }
+        -:   26:
+        1:   27:  result = verifica_placar(fp);
+        -:   28:
+        1:   29:  fclose(fp);
+        1:   30:  CU_ASSERT_EQUAL(result, 0);
+        1:   31:}
+        -:   32:
+        1:   33:void teste_DT_Arquivo_Cheio(void){
+        -:   34:  FILE *fp;
+        -:   35:  int result;
+        -:   36:
+        1:   37:  if (!(fp = fopen("placar2.txt", "r+"))){
+    #####:   38:        printf("Erro! Impossivel abrir o arquivo!\n");
+    #####:   39:        exit(0);
+        -:   40:  }
+        -:   41:
+        1:   42:  result = verifica_placar(fp);
+        1:   43:  printf("Arquivo possui %d linhas!\t", result);
+        -:   44:
+        1:   45:  fclose(fp);
+        1:   46:  CU_ASSERT_NOT_EQUAL(result, 0);
+        1:   47:}
+        -:   48:
+        1:   49:void  adicionar_suite(void){
+        -:   50:	CU_pSuite suite;
+        -:   51:
+        -:   52:	/*Cria uma suite que conterá todos os testes*/
+        1:   53:	suite = CU_add_suite("Testes da smo_datas",NULL,NULL);
+        -:   54:
+        -:   55:
+        -:   56:	/*Adiciona os testes para a função DT_data_valida*/
+        1:   57:	CU_ADD_TEST(suite, teste_DT_Arquivo_Vazio);
+        1:   58:  CU_ADD_TEST(suite, teste_DT_Arquivo_Cheio);
+        1:   59:}
+        -:   60:
+        1:   61:int main(void){
+        -:   62:	/*Inicializa o registro de suítes e testes do CUnit*/
+        1:   63:	if (CUE_SUCCESS != CU_initialize_registry())
+    #####:   64:    		return CU_get_error();
+        -:   65:
+        -:   66:    	/*Adiciona os testes ao registro*/
+        1:   67:   	adicionar_suite();
+        -:   68:
+        -:   69:	/*Muda o modo do CUnit para o modo VERBOSE
+        -:   70:	 O modo VERBOSE mostra algumas informacoes a
+        -:   71:	 mais na hora da execucao. Outras opções: NORMAL e SILENT*/
+        1:   72:	CU_basic_set_mode(CU_BRM_VERBOSE);
+        -:   73:
+        -:   74:	/*Roda os testes e mostra na tela os resultados*/
+        1:   75:	CU_basic_run_tests();
+        -:   76:	//CU_console_run_tests();
+        -:   77:	//CU_automated_run_tests();
+        -:   78:
+        -:   79:
+        -:   80:	/*Limpa o registro*/
+        1:   81:	CU_cleanup_registry();
+        -:   82:
+        1:   83:	return CU_get_error();
+        -:   84:}

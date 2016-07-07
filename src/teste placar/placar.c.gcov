@@ -1,0 +1,134 @@
+        -:    0:Source:../placar.c
+        -:    0:Graph:teste_arquivos.gcno
+        -:    0:Data:teste_arquivos.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <string.h>
+        -:    4:#include <ncurses.h>
+        -:    5:#include "placar.h"
+        -:    6:
+        2:    7:int verifica_placar(FILE* fp){
+        -:    8:  char *teste;
+        -:    9:  char c;
+        -:   10:  int i;
+        -:   11:
+        2:   12:  if(fp == NULL)
+    #####:   13:			printf("Erro, nao foi possivel abrir o arquivo\n");
+        -:   14:  else{
+        2:   15:    i = 0;
+       14:   16:    while( (c=fgetc(fp))!= EOF )
+       10:   17:      if(c == '\n')
+        5:   18:        i++;
+        -:   19:  }
+        -:   20:
+        2:   21:  if (ferror(fp)){
+    #####:   22:    printf ("Arquivo placar.txt vazio!\n");
+    #####:   23:    return -1;
+        -:   24:  }
+        2:   25:  return i;
+        -:   26:}
+        -:   27:
+        -:   28:/**
+        -:   29: * Instancia placar pontuacao, le arquivo e popula o vetor de pontuacao.
+        -:   30: *  @return void
+        -:   31: */
+    #####:   32:void cria_placar(){
+        -:   33:  int i;
+        -:   34:  FILE *fp;
+    #####:   35:  if (!(fp = fopen(ARQUIVO_PONTUACAO, "r+"))){
+    #####:   36:        printf("Erro! Impossivel abrir o arquivo!\n");
+    #####:   37:        exit(0);
+        -:   38:  }
+        -:   39:
+        -:   40:  //PONTUACAO* aloca memoria do array pontuacao definido em placar.h
+    #####:   41:  pontuacao = malloc(5 * sizeof *pontuacao);
+        -:   42:
+        -:   43:  // Inicializa a pilha com valores neutro
+    #####:   44:  for (i = 0; i < 5; i++){
+    #####:   45:      strncpy(pontuacao[i].player, "-", 20);
+    #####:   46:      pontuacao[i].pontos = 0;
+    #####:   47:      pontuacao[i].tempo = 0;
+        -:   48:  }
+        -:   49:
+    #####:   50:  if(fp == NULL)
+    #####:   51:    printf("Arquivo placar.txt vazio!\n");
+        -:   52:
+    #####:   53:  i = 0;
+    #####:   54:  while ((fscanf(fp, "%s %i %i\n", pontuacao[i].player, &pontuacao[i].pontos, &pontuacao[i].tempo)) != EOF)
+    #####:   55:    i++;
+    #####:   56:};
+        -:   57:
+        -:   58:/**
+        -:   59: * Ordena placar por ordem de maior pontuacao para a menor.
+        -:   60: *  @param *player um char
+        -:   61: *  @param pontos um int
+        -:   62: *  @param tempo um int
+        -:   63: *  @return void
+        -:   64: */
+    #####:   65:void atualiza_placar(char *player, int pontos, int tempo){
+        -:   66:  char *player_aux;
+        -:   67:  int pontos_aux, tempo_aux, i, y;
+        -:   68:
+        -:   69:  // Insere pontuacao no ranking caso ela seja maior do que a menor pontuacao
+    #####:   70:  if (pontos >= pontuacao[4].pontos){
+    #####:   71:    strncpy(pontuacao[4].player, player, 20);
+    #####:   72:    pontuacao[4].pontos = pontos;
+    #####:   73:    pontuacao[4].tempo = tempo;
+        -:   74:  }
+        -:   75:
+        -:   76:  // Ordena o ranking em orgem de maior pontuacao
+    #####:   77:  for (i = 0; i < 5; i++){
+    #####:   78:    for (y = i+1; y < 5; y++){
+    #####:   79:      if (pontuacao[i].pontos <= pontuacao[y].pontos){
+    #####:   80:        strncpy(player_aux, pontuacao[i].player, 20);
+    #####:   81:        pontos_aux = pontuacao[i].pontos;
+    #####:   82:        tempo_aux = pontuacao[i].tempo;
+        -:   83:
+    #####:   84:        strncpy(pontuacao[i].player, pontuacao[y].player, 20);
+    #####:   85:        pontuacao[i].pontos = pontuacao[y].pontos;
+    #####:   86:        pontuacao[i].tempo = pontuacao[y].tempo;
+        -:   87:
+    #####:   88:        strncpy(pontuacao[y].player, player_aux, 20);
+    #####:   89:        pontuacao[y].pontos = pontos_aux;
+    #####:   90:        pontuacao[y].tempo = tempo_aux;
+        -:   91:      }
+        -:   92:    }
+        -:   93:  }
+    #####:   94:}
+        -:   95:
+        -:   96:/**
+        -:   97: * Ordena placar por ordem de maior pontuacao para a menor.
+        -:   98: *  @param *player um char
+        -:   99: *  @param pontos um int
+        -:  100: *  @param tempo um int
+        -:  101: *  @return void
+        -:  102: */
+    #####:  103:void mostra_placar(){
+        -:  104:  int i;
+    #####:  105:  for (i=0; i < 5; i++){
+        -:  106:    //mvprintw(i+15,20,"%s", pontuacao[i].player);
+        -:  107:    //mvprintw(i+15,40,"%i", pontuacao[i].pontos);
+        -:  108:    //mvprintw(i+15,55,"%i", pontuacao[i].tempo);
+        -:  109:  }
+    #####:  110:}
+        -:  111:
+        -:  112:/**
+        -:  113: * Escreve o placar atualizado no arquivo.
+        -:  114: *  @return void
+        -:  115: */
+    #####:  116:void escreve_placar(){
+        -:  117:  int i;
+        -:  118:  FILE *fp;
+    #####:  119:  if (!(fp = fopen(ARQUIVO_PONTUACAO, "w"))){
+    #####:  120:        printf("Erro! Impossivel abrir o arquivo!\n");
+    #####:  121:        exit(0);
+        -:  122:  }
+        -:  123:
+        -:  124:  // Percorre array escrevendo pontuacao no arquivo
+    #####:  125:  for (i = 0; i < 5; i++)
+    #####:  126:    fprintf(fp, "%s %i %i\n", pontuacao[i].player, pontuacao[i].pontos, pontuacao[i].tempo);
+    #####:  127:  fflush(fp);
+    #####:  128:  fclose(fp);
+    #####:  129:}
