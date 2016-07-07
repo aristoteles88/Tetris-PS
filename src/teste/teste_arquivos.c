@@ -15,6 +15,12 @@ void adicionar_suite(void);
 void teste_DT_Arquivo_Vazio(void);
 void teste_DT_Arquivo_Cheio(void);
 
+/**
+ * Instancia um tipo arquivo vazio e o submete à analise da funcao verifica_placar()
+ * Caso o arquivo esteja vazio o teste tera sucesso.
+ *  @param void
+ *  @return void
+ */
 void teste_DT_Arquivo_Vazio(void){
   FILE *fp;
   int result;
@@ -30,6 +36,13 @@ void teste_DT_Arquivo_Vazio(void){
   CU_ASSERT_EQUAL(result, 0);
 }
 
+/**
+ * Instancia um tipo arquivo com 5 linhas e o submete à analise da funcao verifica_placar()
+ * Caso o arquivo esteja cheio o teste tera sucesso e a quantidade de linhas do arquivo
+ * é impressa.
+ *  @param void
+ *  @return void
+ */
 void teste_DT_Arquivo_Cheio(void){
   FILE *fp;
   int result;
