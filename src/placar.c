@@ -4,7 +4,10 @@
 #include <ncurses.h>
 #include "placar.h"
 
-// Abrindo e lendo arquivo e alocando espaco de memoria para o array de pontuacao
+/**
+ * Instancia placar pontuacao, le arquivo e popula o vetor de pontuacao.
+ *  @return void
+ */
 void cria_placar(){
   int i;
   FILE *fp;
@@ -24,14 +27,20 @@ void cria_placar(){
   }
 
   if(fp == NULL)
-    printf("Erro ao abrir o arquivo!\n");
+    printf("Arquivo placar.txt vazio!\n");
 
   i = 0;
   while ((fscanf(fp, "%s %i %i\n", pontuacao[i].player, &pontuacao[i].pontos, &pontuacao[i].tempo)) != EOF)
     i++;
 };
 
-// Recebe nova pontuacao e reordena o array por ordem de maior pontuacao
+/**
+ * Ordena placar por ordem de maior pontuacao para a menor.
+ *  @param *player um char
+ *  @param pontos um int
+ *  @param tempo um int
+ *  @return void
+ */
 void atualiza_placar(char *player, int pontos, int tempo){
   char *player_aux;
   int pontos_aux, tempo_aux, i, y;
@@ -63,16 +72,26 @@ void atualiza_placar(char *player, int pontos, int tempo){
   }
 }
 
-// Percorre array pontuacao e imprime
+/**
+ * Ordena placar por ordem de maior pontuacao para a menor.
+ *  @param *player um char
+ *  @param pontos um int
+ *  @param tempo um int
+ *  @return void
+ */
 void mostra_placar(){
   int i;
   for (i=0; i < 5; i++){
-    mvprintw(i+15,20,"%s", pontuacao[i].player);
-    mvprintw(i+15,40,"%i", pontuacao[i].pontos);
-    mvprintw(i+15,55,"%i", pontuacao[i].tempo);
+    //mvprintw(i+15,20,"%s", pontuacao[i].player);
+    //mvprintw(i+15,40,"%i", pontuacao[i].pontos);
+    //mvprintw(i+15,55,"%i", pontuacao[i].tempo);
   }
 }
 
+/**
+ * Escreve o placar atualizado no arquivo.
+ *  @return void
+ */
 void escreve_placar(){
   int i;
   FILE *fp;
