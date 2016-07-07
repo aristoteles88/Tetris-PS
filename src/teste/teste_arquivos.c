@@ -5,7 +5,7 @@
 
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
-#include "placar.c"
+#include "../placar.c"
 
 void adicionar_suite(void);
 
@@ -13,26 +13,37 @@ void adicionar_suite(void);
 /** Função cria_placar
 */
 void teste_DT_Arquivo_Vazio(void);
-void teste_DT_Cria_Placar(void);
+void teste_DT_Arquivo_Cheio(void);
 
 void teste_DT_Arquivo_Vazio(void){
   FILE *fp;
-  char c;
+  int result;
 
-  fp = fopen("placar.txt", "w");
-
-  c = fgetc(fp);
-  if( ferror(fp) )
-  {
-     printf("Arquivo placar.txt vazio!\n");
+  if (!(fp = fopen("placar.txt", "r+"))){
+        printf("Erro! Impossivel abrir o arquivo!\n");
+        exit(0);
   }
-  //clearerr(fp);
+
+  result = verifica_placar(fp);
+
   fclose(fp);
-  CU_ASSERT_TRUE( !c );
+  CU_ASSERT_EQUAL(result, 0);
 }
 
-void teste_DT_Cria_Placar(void){
-  
+void teste_DT_Arquivo_Cheio(void){
+  FILE *fp;
+  int result;
+
+  if (!(fp = fopen("placar2.txt", "r+"))){
+        printf("Erro! Impossivel abrir o arquivo!\n");
+        exit(0);
+  }
+
+  result = verifica_placar(fp);
+  printf("Arquivo possui %d linhas!\t", result);
+
+  fclose(fp);
+  CU_ASSERT_NOT_EQUAL(result, 0);
 }
 
 void  adicionar_suite(void){
@@ -44,7 +55,7 @@ void  adicionar_suite(void){
 
 	/*Adiciona os testes para a função DT_data_valida*/
 	CU_ADD_TEST(suite, teste_DT_Arquivo_Vazio);
-  CU_ADD_TEST(suite, teste_DT_Cria_Placar);
+  CU_ADD_TEST(suite, teste_DT_Arquivo_Cheio);
 }
 
 int main(void){
