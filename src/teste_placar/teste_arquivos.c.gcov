@@ -1,0 +1,104 @@
+        -:    0:Source:teste_arquivos.c
+        -:    0:Graph:teste_arquivos.gcno
+        -:    0:Data:teste_arquivos.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    0:Source is newer than graph
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <string.h>
+        -:    4:#include <ncurses.h>
+        -:    5:
+        -:    6:#include "CUnit/CUnit.h"
+        -:    7:#include "CUnit/Basic.h"
+        -:    8:#include "../placar.c"
+        -:    9:
+        -:   10:void adicionar_suite(void);
+        -:   11:
+        -:   12:/*Abaixo estão as funções que efetuam os testes de arquivo
+        -:   13:/** Função cria_placar
+        -:   14:*/
+        -:   15:void teste_DT_Arquivo_Vazio(void);
+        -:   16:void teste_DT_Arquivo_Cheio(void);
+        -:   17:
+        1:   18:/**
+        -:   19: * Instancia um tipo arquivo vazio e o submete à analise da funcao verifica_placar()
+        -:   20: * Caso o arquivo esteja vazio o teste tera sucesso.
+        -:   21: *  @param void
+        1:   22: *  @return void
+    #####:   23: */
+    #####:   24:void teste_DT_Arquivo_Vazio(void){
+        -:   25:  FILE *fp;
+        -:   26:  int result;
+        1:   27:
+        -:   28:  if (!(fp = fopen("placar.txt", "r+"))){
+        1:   29:        printf("Erro! Impossivel abrir o arquivo!\n");
+        1:   30:        exit(0);
+        1:   31:  }
+        -:   32:
+        1:   33:  result = verifica_placar(fp);
+        -:   34:
+        -:   35:  fclose(fp);
+        -:   36:  CU_ASSERT_EQUAL(result, 0);
+        1:   37:}
+    #####:   38:
+    #####:   39:
+        -:   40:/**
+        -:   41: * Instancia um tipo arquivo com 5 linhas e o submete à analise da funcao verifica_placar()
+        1:   42: * Caso o arquivo esteja cheio o teste tera sucesso e a quantidade de linhas do arquivo
+        1:   43: * é impressa.
+        -:   44: *  @param void
+        1:   45: *  @return void
+        1:   46: */
+        1:   47:void teste_DT_Arquivo_Cheio(void){
+        -:   48:  FILE *fp;
+        1:   49:  int result;
+        -:   50:
+        -:   51:  if (!(fp = fopen("placar2.txt", "r+"))){
+        -:   52:        printf("Erro! Impossivel abrir o arquivo!\n");
+        1:   53:        exit(0);
+        -:   54:  }
+        -:   55:
+        -:   56:  result = verifica_placar(fp);
+        1:   57:  printf("Arquivo possui %d linhas!\t", result);
+        1:   58:
+        1:   59:  fclose(fp);
+        -:   60:  CU_ASSERT_NOT_EQUAL(result, 0);
+        1:   61:}
+        -:   62:
+        1:   63:void  adicionar_suite(void){
+    #####:   64:	CU_pSuite suite;
+        -:   65:
+        -:   66:	/*Cria uma suite que conterá todos os testes*/
+        1:   67:	suite = CU_add_suite("Testes da smo_datas",NULL,NULL);
+        -:   68:
+        -:   69:
+        -:   70:	/*Adiciona os testes para a função DT_data_valida*/
+        -:   71:	CU_ADD_TEST(suite, teste_DT_Arquivo_Vazio);
+        1:   72:  CU_ADD_TEST(suite, teste_DT_Arquivo_Cheio);
+        -:   73:}
+        -:   74:
+        1:   75:int main(void){
+        -:   76:	/*Inicializa o registro de suítes e testes do CUnit*/
+        -:   77:	if (CUE_SUCCESS != CU_initialize_registry())
+        -:   78:    		return CU_get_error();
+        -:   79:
+        -:   80:    	/*Adiciona os testes ao registro*/
+        1:   81:   	adicionar_suite();
+        -:   82:
+        1:   83:	/*Muda o modo do CUnit para o modo VERBOSE
+        -:   84:	 O modo VERBOSE mostra algumas informacoes a
+        -:   85:	 mais na hora da execucao. Outras opções: NORMAL e SILENT*/
+        -:   86:	CU_basic_set_mode(CU_BRM_VERBOSE);
+        -:   87:
+        -:   88:	/*Roda os testes e mostra na tela os resultados*/
+        -:   89:	CU_basic_run_tests();
+        -:   90:	//CU_console_run_tests();
+        -:   91:	//CU_automated_run_tests();
+        -:   92:
+        -:   93:
+        -:   94:	/*Limpa o registro*/
+        -:   95:	CU_cleanup_registry();
+        -:   96:
+        -:   97:	return CU_get_error();
+        -:   98:}
